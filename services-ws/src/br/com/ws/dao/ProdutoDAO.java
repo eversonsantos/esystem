@@ -30,8 +30,8 @@ public class ProdutoDAO {
 	public List<Produto> listaProduto(){
 		List<Historico> precos = new ArrayList<>();
 		precos.add(new Historico(new BigDecimal(0.25)));
-		precos.add(new Historico(new BigDecimal(0.25)));
-		precos.add(new Historico(new BigDecimal(0.25)));
+		precos.add(new Historico(new BigDecimal(0.50)));
+		precos.add(new Historico(new BigDecimal(0.75)));
 		produtos.add(new Produto(1L, "Farinha", precos));
 		produtos.add(new Produto(2L, "Açucar", precos));
 		produtos.add(new Produto(3L, "Café" , precos));

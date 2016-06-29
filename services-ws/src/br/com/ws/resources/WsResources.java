@@ -3,30 +3,23 @@
  */
 package br.com.ws.resources;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.json.JSONObject;
+import br.com.ws.dao.ProdutoDAO;
+import br.com.ws.model.Historico;
+import br.com.ws.model.Produto;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-
-import br.com.ws.dao.ProdutoDAO;
-import br.com.ws.model.Produto;
-import br.com.ws.model.Produtos;
+import com.google.gson.reflect.TypeToken;
 
 /**
  * @author totvs_esantos
@@ -47,39 +40,22 @@ public class WsResources {
 		return xml;
 	}
 	
-	@SuppressWarnings("unchecked")
-	@GET
-	@Path("produtos")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Produto> lista(){
-		ps = new Gson().fromJson(xml, List.class);
-		return ps;
-	}
-
-
-	@SuppressWarnings("unchecked")
 	@POST
 	@Path("createProduto")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void createProduto(String json) throws IOException{
-		System.out.println(json);
-		this.parseArrayJSonProduto(new Gson().fromJson(json, JsonArray.class));
+		//System.out.println(json);
+		 Type listType = new TypeToken<List<Produto>>() {}.getType();
+		 List<Produto> produtos = new Gson().fromJson(json, listType);
+		 
+		 for (Produto produto : produtos) {
+			for (Historico h : produto.getPrecos()) {
+				System.out.println(produto.getNome()+" "+ produto.getId()+ " "+ h.getPreco());
+			}
+		}
+		//this.parseArrayJSonProduto(new Gson().fromJson(json, JsonArray.class));
 //		ps = new Gson().fromJson(json, List.class);
 //		xml = new Gson().toJson(ps);
-	}
-	
-	private List<Produto> parseArrayJSonProduto(JsonArray jsonArray) {
-		List<Produto> produtos = new ArrayList<Produto>();
-		
-		Gson gson = new Gson();
-		Produto produto = null;
-		
-		for(JsonElement element : jsonArray){
-			System.out.println("element " + element);
-			produto = gson.fromJson(element, Produto.class);
-			produtos.add(produto);
-		}
-		return produtos;
 	}
 	
 }
