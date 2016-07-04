@@ -45,12 +45,14 @@ public class WsResources {
 	@Produces(MediaType.APPLICATION_JSON)
 	public void createProduto(String json) throws IOException{
 		//System.out.println(json);
-		 Type listType = new TypeToken<List<Produto>>() {}.getType();
-		 List<Produto> produtos = new Gson().fromJson(json, listType);
+//		 Type listType = new TypeToken<List<Produto>>() {}.getType();
+		 List<Produto> produtos = new ParseJsonToEntity<Produto>().toObjectList(json, Produto.class);
+		 
+//		 Produto produto = new ParseJsonToEntity<Produto>().toObject(json, Produto.class);//new Gson().fromJson(json, Produto.class);
 		 
 		 for (Produto produto : produtos) {
 			for (Historico h : produto.getPrecos()) {
-				System.out.println(produto.getNome()+" "+ produto.getId()+ " "+ h.getPreco());
+				System.out.println(produto.getNome()+" "+ produto.getId()+ " "+ produto.getPrecos().size());
 			}
 		}
 		//this.parseArrayJSonProduto(new Gson().fromJson(json, JsonArray.class));
