@@ -1,22 +1,35 @@
 package br.com.storeweb.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 
-//@Entity(name="tbl_pessoa")
-public class Pessoa extends UsuarioAtualizador{
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "cd_pes")
+@Entity(name="tbl_pessoa")
+public class Pessoa extends EntityDefault{
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cd_pes")
 	private Long cd_pes;
-//	@Column(name= "nm_pes")
+	
+	@Column(name= "nm_pes")
 	private String nm_pes;
-//	@Column(name= "cd_con")
+	
+	@OneToOne
+	@JoinColumn(name = "cd_con")
 	private Contato cd_con;
-//	@Column(name= "nr_cic_pes")
+	
+	@Column(name= "nr_cic_pes")
 	private String nr_cic_pes;
+	
 //	@Column(name= "cd_pfi")
-	private PessoaFisica cd_pfi;
+//	private PessoaFisica cd_pfi;
 //	private PessoaJuridica pJuridica;
 //	@Column(name= "cod_end_pes")
 //	private Endereco endereco;
@@ -57,13 +70,13 @@ public class Pessoa extends UsuarioAtualizador{
 		this.nr_cic_pes = nr_cic_pes;
 	}
 
-	public PessoaFisica getCd_pfi() {
-		return cd_pfi;
-	}
-
-	public void setCd_pfi(PessoaFisica cd_pfi) {
-		this.cd_pfi = cd_pfi;
-	}
+//	public PessoaFisica getCd_pfi() {
+//		return cd_pfi;
+//	}
+//
+//	public void setCd_pfi(PessoaFisica cd_pfi) {
+//		this.cd_pfi = cd_pfi;
+//	}
 
 	
 }

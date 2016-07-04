@@ -2,22 +2,44 @@ package br.com.storeweb.model;
 
 import java.util.List;
 
-public class Contato extends UsuarioAtualizador{
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-	private Long id;
+@Entity(name="tbl_contato")
+public class Contato extends EntityDefault{
+
+	@Id
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Column(name = "cd_con")
+	private Long cd_con;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "cd_tel")
 	private List<Telefone> telefones;
+	
+	@OneToOne(mappedBy = "cd_con")
 	private Pessoa pessoa;
 	
 	public Contato() {
 
 	}
 	
-	public Long getId() {
-		return id;
+	public Long getCd_con() {
+		return cd_con;
 	}
-	public void setId(Long id) {
-		this.id = id;
+
+	public void setCd_con(Long cd_con) {
+		this.cd_con = cd_con;
 	}
+
 	public List<Telefone> getTelefones() {
 		return telefones;
 	}

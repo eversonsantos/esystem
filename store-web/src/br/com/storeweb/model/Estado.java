@@ -1,6 +1,6 @@
 package br.com.storeweb.model;
 
-public class Estado extends UsuarioAtualizador{
+public class Estado extends EntityDefault{
 
 	private Long id;
 	private String estado;

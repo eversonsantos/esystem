@@ -2,7 +2,7 @@ package br.com.storeweb.model;
 
 import java.util.Date;
 
-public class Documento extends UsuarioAtualizador{
+public class Documento extends EntityDefault{
 
 	private String numero;
 	private String oEmissor;
