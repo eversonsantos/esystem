@@ -21,19 +21,28 @@ public class Produto extends EntityDefault{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String cd_prd;
+	private long cd_prd;
 	
 	@Column(name="nm_prd", length = 150, nullable = false)
 	private String nm_prd;
 	
-	@Column(name = "vr_prd", columnDefinition = "numeric")
+	@Column(name = "vr_prd")
 	private BigDecimal vr_prd;
+	
+	public Produto() {
+	}
 
-	public String getCd_prd() {
+	public Produto(long cd_prd, String nm_prd, BigDecimal vr_prd) {
+		this.cd_prd = cd_prd;
+		this.nm_prd = nm_prd;
+		this.vr_prd = vr_prd;
+	}
+
+	public long getCd_prd() {
 		return cd_prd;
 	}
 
-	public void setCd_prd(String cd_prd) {
+	public void setCd_prd(long cd_prd) {
 		this.cd_prd = cd_prd;
 	}
 

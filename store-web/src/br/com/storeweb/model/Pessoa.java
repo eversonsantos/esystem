@@ -21,9 +21,9 @@ public class Pessoa extends EntityDefault{
 	@Column(name= "nm_pes")
 	private String nm_pes;
 	
-	@OneToOne
-	@JoinColumn(name = "cd_con")
-	private Contato cd_con;
+//	@OneToOne
+//	@JoinColumn(name = "cd_con")
+//	private Contato cd_con;
 	
 	@Column(name= "nr_cic_pes")
 	private String nr_cic_pes;
@@ -37,6 +37,14 @@ public class Pessoa extends EntityDefault{
 	public Pessoa() {
 		
 	}
+	
+	public Pessoa(Long cd_pes, String nm_pes, String nr_cic_pes) {
+	this.cd_pes = cd_pes;
+	this.nm_pes = nm_pes;
+	this.nr_cic_pes = nr_cic_pes;
+}
+
+
 
 	public Long getCd_pes() {
 		return cd_pes;
@@ -54,13 +62,13 @@ public class Pessoa extends EntityDefault{
 		this.nm_pes = nm_pes;
 	}
 
-	public Contato getCd_con() {
-		return cd_con;
-	}
-
-	public void setCd_con(Contato cd_con) {
-		this.cd_con = cd_con;
-	}
+//	public Contato getCd_con() {
+//		return cd_con;
+//	}
+//
+//	public void setCd_con(Contato cd_con) {
+//		this.cd_con = cd_con;
+//	}
 
 	public String getNr_cic_pes() {
 		return nr_cic_pes;

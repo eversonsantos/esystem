@@ -8,6 +8,7 @@
 	<class>br.com.storeweb.model.Contato</class>
 	<class>br.com.storeweb.model.Pessoa</class>
 	<class>br.com.storeweb.model.Telefone</class>
+	<class>br.com.storeweb.model.Menu</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

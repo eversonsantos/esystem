@@ -25,8 +25,8 @@ public class Contato extends EntityDefault{
 	@JoinColumn(name = "cd_tel")
 	private List<Telefone> telefones;
 	
-	@OneToOne(mappedBy = "cd_con")
-	private Pessoa pessoa;
+//	@OneToOne(mappedBy = "cd_con")
+//	private Pessoa pessoa;
 	
 	public Contato() {
 
@@ -47,13 +47,13 @@ public class Contato extends EntityDefault{
 		this.telefones = telefones;
 	}
 
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
+//	public Pessoa getPessoa() {
+//		return pessoa;
+//	}
+//
+//	public void setPessoa(Pessoa pessoa) {
+//		this.pessoa = pessoa;
+//	}
 	
 	
 	
