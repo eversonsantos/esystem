@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="usuarioApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<!-- Import de JavaScript -->
+<script type="text/javascript" src="../../resources/angular.min.js"></script>
+<script type="text/javascript"
+	src="../../resources/angular-locale_pt-br.js"></script>
+<script type="text/javascript"
+	src="../../resources/app/js/controllers/usuario/usuario-controller.js"></script>
+<script type="text/javascript"
+	src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="../../resources/app/js/custom/util.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Import de CSS -->
+<link href="../../resources/bootstrap/css/bootstrap.css"
+	rel="stylesheet" type="text/css" />
+
+<title>Usuarios Cadastros</title>
+</head>
+<body ng-controller="usuarioCtrl">
+<div class="jumbotron" style="margin: 100px; border-radius :5px;">
+  <div class="container">
+				<div class="row">
+					<div class="col-md-2">
+						  <ul>
+						    <li><a href="#">Action</a></li>
+						    <li><a href="#">Another action</a></li>
+						    <li><a href="#">Something else here</a></li>
+						    <li><a href="#">Separated link</a></li>
+						  </ul>
+					</div>
+					<div class="col-md-8">
+						<div class="panel panel-success">
+							<div class="panel-heading">Usuarios cadastrados no sistema</div>
+							<div class="panel-body">
+								<table class="table table-striped">
+									<tr>
+										<th>Matricula</th>
+										<th>Login</th>
+										<th>Usuário</th>
+										<th>CPF</th>
+										<th>Senha</th>
+										<th>Data Inclusão</th>
+										<th></th>
+									</tr>
+									<tr ng-repeat="u in usuarios">
+										<td>{{u.cd_mat_usu}}</td>
+										<td>{{u.cd_log_usu}}</td>
+										<td>{{u.cd_pes.nm_pes}}</td>
+										<td>{{u.cd_pes.nr_cic_pes}}</td>
+										<td>{{u.cd_snh_usu}}</td>
+										<td>{{u.dt_inc | date : 'dd/MM/yyyy'}}</td>
+										<td>	<a href="#" class="glyphicon glyphicon-pencil" ng-click="edit($index)" ng-show="{{isEdit}}">Editar</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>	
+</body>
+</html>
