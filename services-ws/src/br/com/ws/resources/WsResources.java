@@ -32,6 +32,7 @@ public class WsResources {
 	ProdutoDAO pDao = new ProdutoDAO(ps);
 	Produto p = new Produto();
 	String xml = new Gson().toJson(pDao.listaProduto());
+	
 	@GET
 	@Path("sayHello")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -46,7 +47,7 @@ public class WsResources {
 	public void createProduto(String json) throws IOException{
 		//System.out.println(json);
 //		 Type listType = new TypeToken<List<Produto>>() {}.getType();
-		 List<Produto> produtos = new ParseJsonToEntity<Produto>().toObjectList(json, Produto.class);
+		 List<Produto> produtos = new ParseJsonToEntity<Produto>().fromJsonToListEntity(json, Produto.class);
 		 
 //		 Produto produto = new ParseJsonToEntity<Produto>().toObject(json, Produto.class);//new Gson().fromJson(json, Produto.class);
 		 

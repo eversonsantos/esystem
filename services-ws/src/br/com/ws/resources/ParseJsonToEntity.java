@@ -9,7 +9,6 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 /**
@@ -20,7 +19,8 @@ public class ParseJsonToEntity<T>{
 	Gson gson = new Gson();
 
 
-	public <T> List<T> toObjectList(String json, Class<T> clazz) {
+	@SuppressWarnings("hiding")
+	public <T> List<T> fromJsonToListEntity(String json, Class<T> clazz) {
         if(json == null){
             return null;
         }
@@ -36,7 +36,8 @@ public class ParseJsonToEntity<T>{
         return list;
     }
 	
-	public <T> T toObject(String json, Class<T> clazz){
+	@SuppressWarnings("hiding")
+	public <T> T fromJsonToEntity(String json, Class<T> clazz){
 		return new Gson().fromJson(json, clazz);
 	}
 

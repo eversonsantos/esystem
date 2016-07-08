@@ -3,28 +3,8 @@
 <head >
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<script type="text/javascript" src="resources/angular.min.js"></script>
-<script type="text/javascript">
-	angular.module('appMain',[]);
-	angular.module('appMain').controller('ctrl',function($http, $scope){
-			$scope.msg = 'Ola'
-			$scope.produtos = [];
-			$scope.produto;
-			var carregar = function(){$http.get('http://10.0.20.89:8080/services-ws/ws/ws-resources/sayHello').success(function(data){
-				console.log(data);
-				$scope.produtos = data;
-				console.log('Produtos '+$scope.produtos);
-			});
-			}
-			$scope.addCliente = function () {
-				$http.post('http://10.0.20.89:8080/services-ws/ws/ws-resources/createProduto',$scope.produtos).success(function(data){
-					console.log('Data '+data);
-					delete $scope.produto;
-				});
-			}
-			carregar();
-	});
-</script>
+<script type="text/javascript" src="resources/lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="resources/app/js/controllers/app.js"></script>
 </head>
 <body ng-controller="ctrl">
 		<div ng-repeat="p in produtos">
