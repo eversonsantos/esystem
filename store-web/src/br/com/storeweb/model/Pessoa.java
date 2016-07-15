@@ -1,5 +1,6 @@
 package br.com.storeweb.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,8 +29,10 @@ public class Pessoa extends EntityDefault{
 	@Column(name= "nr_cic_pes")
 	private String nr_cic_pes;
 	
-//	@Column(name= "cd_pfi")
-//	private PessoaFisica cd_pfi;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name= "cd_pfi")
+	private PessoaFisica cd_pfi;
+	
 //	private PessoaJuridica pJuridica;
 //	@Column(name= "cod_end_pes")
 //	private Endereco endereco;
@@ -38,10 +41,11 @@ public class Pessoa extends EntityDefault{
 		
 	}
 	
-	public Pessoa(Long cd_pes, String nm_pes, String nr_cic_pes) {
+	public Pessoa(Long cd_pes, String nm_pes, String nr_cic_pes, PessoaFisica cd_pfi) {
 	this.cd_pes = cd_pes;
 	this.nm_pes = nm_pes;
 	this.nr_cic_pes = nr_cic_pes;
+	this.cd_pfi = cd_pfi;
 }
 
 
@@ -78,13 +82,13 @@ public class Pessoa extends EntityDefault{
 		this.nr_cic_pes = nr_cic_pes;
 	}
 
-//	public PessoaFisica getCd_pfi() {
-//		return cd_pfi;
-//	}
-//
-//	public void setCd_pfi(PessoaFisica cd_pfi) {
-//		this.cd_pfi = cd_pfi;
-//	}
+	public PessoaFisica getCd_pfi() {
+		return cd_pfi;
+	}
+
+	public void setCd_pfi(PessoaFisica cd_pfi) {
+		this.cd_pfi = cd_pfi;
+	}
 
 	
 }

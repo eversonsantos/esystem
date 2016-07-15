@@ -1,71 +1,89 @@
-/**
- * 
- */
-angular.module("usuarioApp", ["ngLocale"]);
+angular.module("appUsuario", ["ngLocale"]);
 
-angular.module("usuarioApp").controller("usuarioCtrl", function($http, $scope){
+angular.module("appUsuario").controller("controlerUsuario", function($http, $scope){
 	
-	$scope.usuarios = [];
-	$scope.usuario;
-	$scope.matricula;
-	$scope.dataHoje = new Date();
+	$scope.users = [];
+	$scope.user;
+	
+	$scope.comboEscolaridade = [];
+	$scope.comboEstadoCivil = [];
+	$scope.comboNacionalidade = [];
+	
+	$scope.mat;
 	$scope.isEdit = false;
 	$scope.index;
 	
 	var loadUsuarios = function(){
 		$http.get('http://localhost:8080/store-web/ws/usuario/home').success(function(data) {
-			console.log(data);
-			$scope.usuarios =  data;
-			$scope.matricula = geraMatricula('USUA');
-		}).error(function(data) {
-			
+			$scope.users =  data;
+			$scope.mat = geraMatricula('USUA');
 		});
 	}
-	$scope.login = function(){
-		$http.post('http://localhost:8080/store-web/ws/usuario/login', $scope.usuario).success(function(data) {
-			console.log($scope.usuario);
+	var loadEscolaridades = function(){
+		$http.get('http://localhost:8080/store-web/ws/combo/escolaridade').success(function(data) {
+			$scope.comboEscolaridade = data;
+			console.log(data);
+		});
+	}
+	var loadEstadoCivil = function(){
+		$http.get('http://localhost:8080/store-web/ws/combo/estadocivil').success(function(data) {
+			$scope.comboEstadoCivil = data;
+			console.log(data);
+		});
+	}
+	var loadNacionalidade = function(){
+		$http.get('http://localhost:8080/store-web/ws/combo/nacionalidade').success(function(data) {
+			$scope.comboNacionalidade = data;
+			console.log(data);
+		});
+	}
+	
+	var postCreateUser = function(){
+		$http.post('http://localhost:8080/store-web/ws/usuario/createUser', $scope.user).success(function(data) {
+			console.log($scope.user);
 		});
 	}
 	
 	
 	var geraMatricula = function(entity){
 		var matricula = entity+'-';
-		if ($scope.usuarios.length >= 0 && $scope.usuarios.length <= 9) {
-				return matricula+'000'+($scope.usuarios.length+1);
+		if ($scope.users.length >= 0 && $scope.users.length <= 9) {
+				return matricula+'000'+($scope.users.length+1);
 		}
 	}
 	
-	$scope.add = function(){
+	$scope.createUser = function(){
 		if($scope.isEdit){
-			$scope.usuarios.splice($scope.index, 1, $scope.usuario)
-			delete $scope.usuario;
+			$scope.users.splice($scope.index, 1, $scope.user)
+			postCreateUser();
+			delete $scope.user;
 			$scope.isEdit = false;
-			$scope.matricula = geraMatricula('USUA');
-			$scope.dataHoje = new Date();
+			$scope.mat = geraMatricula('USUA');
 		}else{
-			$scope.usuario.cd_mat_usu = $scope.matricula;
-			$scope.usuario.dt_inc = new Date();
-			$scope.usuarios.push(angular.copy($scope.usuario));
-			$scope.matricula = geraMatricula('USUA');
-			delete $scope.usuario;
+			$scope.user.cd_mat_usu = $scope.mat;
+			postCreateUser();
+			$scope.users.push(angular.copy($scope.user));
+			$scope.mat = geraMatricula('USUA');
+			delete $scope.user;
 		}
 	}
 	
-	$scope.edit = function(i){
+	$scope.goToEdit = function(i){
 		$scope.isEdit = true;
-		$scope.usuario = angular.copy(($scope.usuarios[i]));
-		$scope.matricula = $scope.usuario.cd_mat_usu;
-		$scope.dataHoje = $scope.usuario.dt_inc;
+		$scope.user = angular.copy(($scope.users[i]));
+		$scope.mat = $scope.usuario.cd_mat_usu;
+		$scope.dateToday = $scope.user.dt_inc;
 		$scope.index = i;
 		
 	}
 	$scope.init = function(){
-		delete $scope.usuario;
+		delete $scope.user;
 		$scope.isEdit = false;
-		$scope.matricula = geraMatricula('USUA');
-		$scope.dataHoje = new Date();
+		$scope.mat = geraMatricula('USUA');
+		$scope.dateToday = new Date();
 	}
 	
-	
-	
+	loadUsuarios();
+	loadEscolaridades();
+	loadEstadoCivil();
 });

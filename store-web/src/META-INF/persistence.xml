@@ -9,6 +9,11 @@
 	<class>br.com.storeweb.model.Pessoa</class>
 	<class>br.com.storeweb.model.Telefone</class>
 	<class>br.com.storeweb.model.Menu</class>
+	<class>br.com.storeweb.model.Funcao</class>
+	<class>br.com.storeweb.model.PessoaFisica</class>
+	<class>br.com.storeweb.model.Pais</class>
+	<class>br.com.storeweb.model.Estado</class>
+	<class>br.com.storeweb.model.Endereco</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
@@ -21,3 +26,4 @@
 		</properties>
 	</persistence-unit>
 </persistence>
+

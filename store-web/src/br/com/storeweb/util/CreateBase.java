@@ -1,17 +1,19 @@
 package br.com.storeweb.util;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class CreateBase {
 
 	public static void main(String[] args) {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("storeweb");
-		EntityManager manager = factory.createEntityManager();
+//		EntityManagerFactory factory = Persistence.createEntityManagerFactory("storeweb");
+//		EntityManager manager = factory.createEntityManager();
+//		
+//		System.exit(0);
 		
-		System.exit(0);
-
+//		Map<Integer, String> nomes = new HashMap<Integer, String>();
+		
 	}
 
 }

@@ -29,9 +29,7 @@ public class MenuService implements MenuDao{
 
 	@Override
 	public List<Menu> findAllEntitys() {
-		List<Menu> menus = new ArrayList<>();
-		menus.add(new Menu(1L, "Cadastro", "form.html"));
-		return menus;
+		return null;
 	}
 
 	

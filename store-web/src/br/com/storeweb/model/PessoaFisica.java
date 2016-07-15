@@ -1,67 +1,140 @@
 package br.com.storeweb.model;
 
-import java.util.List;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity(name = "tbl_pessoa_fisica")
 public class PessoaFisica {
 
-	private String dataNascimento;
-	private int idade;
-	private String genero;
-	private List<Documento> documentos;
-	private String nacionalidade;
-	private String naturalidade;
-//	private List<Filiacao> filiacao;
-	private EstadoCivil eCivil;
-	private Escolaridade escolaridade;
-	public String getDataNascimento() {
-		return dataNascimento;
-	}
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-	public int getIdade() {
-		return idade;
-	}
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-	public String getGenero() {
-		return genero;
-	}
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-	public List<Documento> getDocumentos() {
-		return documentos;
-	}
-	public void setDocumentos(List<Documento> documentos) {
-		this.documentos = documentos;
-	}
-	public String getNacionalidade() {
-		return nacionalidade;
-	}
-	public void setNacionalidade(String nacionalidade) {
-		this.nacionalidade = nacionalidade;
-	}
-	public String getNaturalidade() {
-		return naturalidade;
-	}
-	public void setNaturalidade(String naturalidade) {
-		this.naturalidade = naturalidade;
-	}
-	public EstadoCivil geteCivil() {
-		return eCivil;
-	}
-	public void seteCivil(EstadoCivil eCivil) {
-		this.eCivil = eCivil;
-	}
-	public Escolaridade getEscolaridade() {
-		return escolaridade;
-	}
-	public void setEscolaridade(Escolaridade escolaridade) {
-		this.escolaridade = escolaridade;
-	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long cd_pfis;
+	
+	@Column(name = "nr_rg", length = 20)
+	private String nr_rg;
 	
 	
+	@Column(name = "id_sex", length = 1)
+	private String id_sex;
+	
+	@Column(name ="dt_nas")
+	private Date dt_nasc;
+	
+	@Column(name = "id_est_cv", length = 50)
+	private String id_est_cv;//Estado Civil
+	
+	@Column(name = "id_nv_esc", length = 50)
+	private String id_nv_esc;//Escolaridade
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cd_uf_nat")
+	private Estado cd_uf_nat;
+	
+	@OneToOne
+	@JoinColumn(name = "cd_nac")
+	private Pais cd_nac;
+	
+	@Column(name ="nm_pai", length = 100)
+	private String nm_pai;
+	
+	@Column(name ="nm_mae", length = 100)
+	private String nm_mae;
+	
+	public PessoaFisica() {
+		
+	}
+	
+	public PessoaFisica(String nr_rg, String id_sex) {
+		this.nr_rg = nr_rg;
+		this.id_sex = id_sex;
+	}
+
+	public Long getCd_pfis() {
+		return cd_pfis;
+	}
+
+	public void setCd_pfis(Long cd_pfis) {
+		this.cd_pfis = cd_pfis;
+	}
+
+	public String getNr_rg() {
+		return nr_rg;
+	}
+
+	public void setNr_rg(String nr_rg) {
+		this.nr_rg = nr_rg;
+	}
+
+	public String getId_sex() {
+		return id_sex;
+	}
+
+	public void setId_sex(String id_sex) {
+		this.id_sex = id_sex;
+	}
+
+	public Date getDt_nasc() {
+		return dt_nasc;
+	}
+
+	public void setDt_nasc(Date dt_nasc) {
+		this.dt_nasc = dt_nasc;
+	}
+
+	public String getId_est_cv() {
+		return id_est_cv;
+	}
+
+	public void setId_est_cv(String id_est_cv) {
+		this.id_est_cv = id_est_cv;
+	}
+
+	public String getId_nv_esc() {
+		return id_nv_esc;
+	}
+
+	public void setId_nv_esc(String id_nv_esc) {
+		this.id_nv_esc = id_nv_esc;
+	}
+
+	public Estado getCd_uf_nat() {
+		return cd_uf_nat;
+	}
+
+	public void setCd_uf_nat(Estado cd_uf_nat) {
+		this.cd_uf_nat = cd_uf_nat;
+	}
+
+	public Pais getCd_nac() {
+		return cd_nac;
+	}
+
+	public void setCd_nac(Pais cd_nac) {
+		this.cd_nac = cd_nac;
+	}
+
+	public String getNm_pai() {
+		return nm_pai;
+	}
+
+	public void setNm_pai(String nm_pai) {
+		this.nm_pai = nm_pai;
+	}
+
+	public String getNm_mae() {
+		return nm_mae;
+	}
+
+	public void setNm_mae(String nm_mae) {
+		this.nm_mae = nm_mae;
+	}
 	
 }

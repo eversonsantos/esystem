@@ -89,5 +89,16 @@ public class Usuario extends EntityDefault implements Serializable{
 	public void setCd_mat_usu(String cd_mat_usu) {
 		this.cd_mat_usu = cd_mat_usu;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Usuario [cd_usua=" + cd_usua + ", cd_mat_usu=" + cd_mat_usu
+				+ ", cd_log_usu=" + cd_log_usu + ", cd_snh_usu=" + cd_snh_usu
+				+ ", cd_pes=" + cd_pes.getCd_pfi().getId_nv_esc() + ", dt_inc=" + dt_inc + "]";
+	}
+	
+	
 	
 }
