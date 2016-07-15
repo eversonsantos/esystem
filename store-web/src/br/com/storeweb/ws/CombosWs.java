@@ -6,6 +6,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import br.com.storeweb.service.ComboService;
+import br.com.storeweb.service.EstadoService;
 import br.com.storeweb.service.PaisService;
 
 import com.google.gson.Gson;
@@ -32,6 +33,13 @@ public class CombosWs {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getListNacionalidade(){
 		return new Gson().toJson(new PaisService().findAllEntitys());
+	}
+	
+	@GET
+	@Path("uf")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getListEstados(){
+		return new Gson().toJson(new EstadoService().findAllEntitys());
 	}
 
 }

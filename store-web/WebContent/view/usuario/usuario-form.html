@@ -69,15 +69,12 @@
 </head>
 <body ng-controller="controlerUsuario" style="margin: 5px;">
 <div class="wrapper">
-<!-- 	<div class="jumbotron" style="margin-left: auto; margin-right: auto;"> -->
 					<div class="box box-primary">
 			            <div class="box-header with-border">
 			              <h3 class="box-title">
 			              	<span class="fa fa-lg fa-user">Cadastro de Usuário</span>
 			              	</h3>
 			            </div>
-<!-- 			            <div class="row"> -->
-<!-- 								<div class="col-md-8"> -->
 									<div class="box-body">
 										<fieldset>
 											<legend>Informações Pessoais</legend>
@@ -122,8 +119,7 @@
 												</div>
 												<div class="col-md-2">
 													<label>Escolaridade</label> 
-													<select class="form-control select2" ng-options="cEscolaridade for cEscolaridade in comboEscolaridade"
-															ng-model="user.cd_pes.cd_pfi.id_nv_esc">
+													<select class="form-control select2" ng-options="cEscolaridade for cEscolaridade in comboEscolaridade"	ng-model="user.cd_pes.cd_pfi.id_nv_esc">
 													  <option selected="selected" value="">Selecione...</option>
 									                </select>
 												</div>
@@ -135,15 +131,16 @@
 												</div>
 												<div class="col-md-2">
 													<label>Nacionalidade</label> 
-													<select class="form-control select2" ng-model="user.cd_pes.cd_pfi.cd_nac" ng-options="cNacionalidade for cNacionalidade in comboNacionalidade">
+													<select class="form-control select2"  ng-model="user.cd_pes.cd_pfi.cd_nac">
 													  <option selected="selected" value="">Selecione...</option>
+													  <option ng-repeat="cNacionalidade in comboNacionalidade" value="cNacionalidade">{{cNacionalidade.ds_nac_pais}}</option>
 									                </select>
 												</div>
 												<div class="col-md-2">
 													<label>Naturalidade</label> 
-													<select class="form-control select2" >
+													<select class="form-control select2" ng-model="user.cd_pes.cd_pfi.cd_uf_nat">
 													  <option selected="selected" value="">Selecione...</option>
-									                  <option value="P">Paraense</option>
+									                  <option ng-repeat="cNaturalidade in comboNaturalidade" value="cNaturalidade">{{cNaturalidade.sg_uf}}</option>
 									                </select>
 												</div>
 												<div class="col-md-6">
@@ -223,34 +220,6 @@
 											</div>	
 										</fieldset>
 									</div>
-<!-- 								</div>	 -->
-<!-- 								<div class="col-md-4"> -->
-<!-- 									<div class="box box-solid"> -->
-<!-- 							            <div class="box-header"> -->
-<!-- 							              <h3 class="box-title"> -->
-<!-- 							              	<span class="fa fa-phone" style="margin-right: 1px;">Telefones Usuário</span> -->
-<!-- 							              	</h3> -->
-<!-- 							            </div> -->
-<!-- 											<div class="box-body"> -->
-<!-- 												<a class="btn btn-block btn-social btn-primary"> -->
-<!-- 									                <i class="fa fa-phone"></i> <b>Adicionar Telefone</b> -->
-<!-- 									             </a> -->
-<!-- 									             <table class="table"> -->
-<!-- 									             	<tr> -->
-<!-- 									             		<td>Telefone</td> -->
-<!-- 									             		<td>Tipo</td> -->
-<!-- 									             		<td>Operadora</td> -->
-<!-- 									             	</tr> -->
-<!-- 									             	<tr> -->
-<!-- 									             		<td>(91)98853-0893</td> -->
-<!-- 									             		<td>Celular</td> -->
-<!-- 									             		<td>Vivo</td> -->
-<!-- 									             	</tr> -->
-<!-- 									             </table> -->
-<!-- 											</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 						</div>		 -->
 						<div class="panel-footer">
 				              <a class="btn btn-block btn-social btn-twitter" ng-click="createUser();">
 				                <i class="fa fa-user-plus"></i> <b>Adicionar usuário</b>
@@ -261,86 +230,47 @@
 						</div>
 					</div>
 <!-- 					Tabela de Usuario Inicio -->
-<!-- 					<div class="box box-primary"> -->
-<!-- 			            <div class="box-header with-border"> -->
-<!-- 			              <h3 class="box-title"> -->
-<!-- 			              	<span class="fa fa-lg fa-users" style="margin-right: 1px;">Usuários Cadastrados</span> -->
-<!-- 			              	</h3> -->
-<!-- 			            </div> -->
-<!-- 			            <div class="row"> --> 
+					<div class="box box-primary">
+			            <div class="box-header with-border">
+			              <h3 class="box-title">
+			              	<span class="fa fa-lg fa-users" style="margin-right: 1px;">Usuários Cadastrados</span>
+			              	</h3>
+			            </div>
+<!-- 			            <div class="row">  -->
 <!-- 								<div class="col-md-8"> -->
-<!-- 									<div class="box-body"> -->
-<!-- 										<div class="row"> -->
-<!-- 												<table class="table"> -->
-<!-- 									             	<tr> -->
-<!-- 										             		<td>Código</td> -->
-<!-- 										             		<td>Usuário</td> -->
-<!-- 										             		<td>CPF</td> -->
-<!-- 										             		<td>RG</td> -->
-<!-- 										             		<td>Sexo</td> -->
-<!-- 										             		<td>Login</td> -->
-<!-- 										             		<td>Data Inclusão</td> -->
-<!-- 										             		<td>Funções</td> -->
-<!-- 									             	</tr> -->
-<!-- 									             	<tr ng-repeat="user in users"> -->
-<!-- 									             			<td>{{user.cd_mat_usu}}</td> -->
-<!-- 										             		<td>{{user.cd_pes.nm_pes}}</td> -->
-<!-- 										             		<td>{{user.cd_pes.nr_cic_pes}}</td> -->
-<!-- 										             		<td>{{user.cd_pes.cd_pfi.nr_rg}}</td> -->
-<!-- 										             		<td>{{user.cd_pes.cd_pfi.id_sex == 'M' ? 'Masculino' : 'Feminino'}}</td> -->
-<!-- 										             		<td>{{user.cd_log_usu}}</td> -->
-<!-- 										             		<td>{{user.dt_inc | date : 'dd/MM/yyyy'}}</td> -->
-<!-- 										             		<td> -->
-<!-- 										             			<a href="#" class="glyphicon glyphicon-pencil" title="Editar o usuário {{user.cd_pes.nm_pes}}" ng-click="goToEdit($index)"> <b>Editar</b></a> -->
-<!-- 										             		</td>	 -->
-<!-- 									             	</tr> -->
-<!-- 										         </table> -->
-<!-- 									 	</div> -->
+									<div class="box-body">
+										<div class="row">
+												<table class="table">
+									             	<tr>
+										             		<td>Código</td>
+										             		<td>Usuário</td>
+										             		<td>CPF</td>
+										             		<td>RG</td>
+										             		<td>Sexo</td>
+										             		<td>Login</td>
+										             		<td>Data Inclusão</td>
+										             		<td>Funções</td>
+									             	</tr>
+									             	<tr ng-repeat="user in users">
+									             			<td>{{user.cd_mat_usu}}</td>
+										             		<td>{{user.cd_pes.nm_pes}}</td>
+										             		<td>{{user.cd_pes.nr_cic_pes}}</td>
+										             		<td>{{user.cd_pes.cd_pfi.nr_rg}}</td>
+										             		<td>{{user.cd_pes.cd_pfi.id_sex == 'M' ? 'Masculino' : 'Feminino'}}</td>
+										             		<td>{{user.cd_log_usu}}</td>
+										             		<td>{{user.dt_inc | date : 'dd/MM/yyyy'}}</td>
+										             		<td>
+										             			<a href="#" class="glyphicon glyphicon-pencil" title="Editar o usuário {{user.cd_pes.nm_pes}}" ng-click="goToEdit($index)"> <b>Editar</b></a>
+										             		</td>	
+									             	</tr>
+										         </table>
+									 	</div>
 <!-- 									</div> -->
-<!-- 					</div> -->
-					<!-- 					Tabela de Usuario Fim -->
-<!-- 		</div> -->
-
-<div class="container">
-				<div class="row">
-					<div class="col-md-2">
-						  <ul>
-						    <li><a href="#">Action</a></li>
-						    <li><a href="#">Another action</a></li>
-						    <li><a href="#">Something else here</a></li>
-						    <li><a href="#">Separated link</a></li>
-						  </ul>
-					</div>
-					<div class="col-md-8">
-						<div class="panel panel-success">
-							<div class="panel-heading">Usuarios cadastrados no sistema</div>
-							<div class="panel-body">
-								<table class="table table-striped">
-									<tr>
-										<th>Matricula</th>
-										<th>Login</th>
-										<th>Usuário</th>
-										<th>CPF</th>
-										<th>Senha</th>
-										<th>Data Inclusão</th>
-										<th></th>
-									</tr>
-									<tr ng-repeat="u in users">
-										<td>{{u.cd_mat_usu}}</td>
-										<td>{{u.cd_log_usu}}</td>
-										<td>{{u.cd_pes.nm_pes}}</td>
-										<td>{{u.cd_pes.nr_cic_pes}}</td>
-										<td>{{u.cd_snh_usu}}</td>
-										<td>{{u.dt_inc | date : 'dd/MM/yyyy'}}</td>
-										<td>	<a href="#" class="glyphicon glyphicon-pencil" ng-click="edit($index)" ng-show="{{isEdit}}">Editar</a>
-										</td>
-									</tr>
-								</table>
-							</div>
+<!-- 								</div> -->
+<!-- 										Tabela de Usuario Fim -->
 						</div>
+
 					</div>
-				</div>
-		</div>
 </div>
 </body>
 </html>

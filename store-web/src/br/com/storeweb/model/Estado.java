@@ -23,6 +23,15 @@ public class Estado extends EntityDefault{
 	public Estado() {
 		
 	}
+	
+
+	public Estado(Long cd_uf, String nm_uf, String sg_uf) {
+		this.cd_uf = cd_uf;
+		this.nm_uf = nm_uf;
+		this.sg_uf = sg_uf;
+	}
+
+
 
 	public Long getCd_uf() {
 		return cd_uf;

@@ -8,6 +8,7 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 	$scope.comboEscolaridade = [];
 	$scope.comboEstadoCivil = [];
 	$scope.comboNacionalidade = [];
+	$scope.comboNaturalidade = [];
 	
 	$scope.mat;
 	$scope.isEdit = false;
@@ -38,6 +39,13 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 		});
 	}
 	
+	var loadNaturalidade = function(){
+		$http.get('http://localhost:8080/store-web/ws/combo/uf').success(function(data) {
+			$scope.comboNaturalidade = data;
+			console.log(data);
+		});
+	}
+	
 	var postCreateUser = function(){
 		$http.post('http://localhost:8080/store-web/ws/usuario/createUser', $scope.user).success(function(data) {
 			console.log($scope.user);
@@ -55,13 +63,11 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 	$scope.createUser = function(){
 		if($scope.isEdit){
 			$scope.users.splice($scope.index, 1, $scope.user)
-			postCreateUser();
 			delete $scope.user;
 			$scope.isEdit = false;
 			$scope.mat = geraMatricula('USUA');
 		}else{
 			$scope.user.cd_mat_usu = $scope.mat;
-			postCreateUser();
 			$scope.users.push(angular.copy($scope.user));
 			$scope.mat = geraMatricula('USUA');
 			delete $scope.user;
@@ -71,7 +77,7 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 	$scope.goToEdit = function(i){
 		$scope.isEdit = true;
 		$scope.user = angular.copy(($scope.users[i]));
-		$scope.mat = $scope.usuario.cd_mat_usu;
+		$scope.mat = $scope.user.cd_mat_usu;
 		$scope.dateToday = $scope.user.dt_inc;
 		$scope.index = i;
 		
@@ -86,4 +92,6 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 	loadUsuarios();
 	loadEscolaridades();
 	loadEstadoCivil();
+	loadNacionalidade();
+	loadNaturalidade();
 });
