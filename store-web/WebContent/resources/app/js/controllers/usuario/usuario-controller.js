@@ -4,6 +4,8 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 	
 	$scope.users = [];
 	$scope.user;
+	$scope.telefone;
+	$scope.telefones = [];
 	
 	$scope.comboEscolaridade = [];
 	$scope.comboEstadoCivil = [];
@@ -13,6 +15,35 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 	$scope.mat;
 	$scope.isEdit = false;
 	$scope.index;
+	$scope.isEditEndereco = true;
+	
+	$scope.cep = '';
+	$scope.localidade = '';
+	$scope.logradouro = '';
+	$scope.uf = '';
+	$scope.bairro = '';
+	$scope.complemento = '';
+	
+	$scope.searchEndereco = function(){
+		var validacep = /^[0-9]{8}$/;
+		
+		if (!validacep.test($scope.cep)){
+			alert('CEP Informado invalído');
+			return;
+		}
+		
+		$http.get("https://viacep.com.br/ws/"+$scope.cep+"/json/").success(function(data) {
+			console.log(data);
+			$scope.localidade = data.localidade;
+			$scope.logradouro = data.logradouro;
+			$scope.bairro = data.bairro;
+			$scope.uf = data.uf;
+			$scope.complemento = data.complemento;
+			$scope.isEditEndereco = false;
+		}).error(function() {
+			
+		});
+	}
 	
 	var loadUsuarios = function(){
 		$http.get('http://localhost:8080/store-web/ws/usuario/home').success(function(data) {
@@ -73,6 +104,12 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 			delete $scope.user;
 		}
 	}
+	
+	$scope.createTelefone = function(){
+		$scope.telefones.push(angular.copy($scope.telefone));
+		delete $scope.telefone;
+	}
+	
 	
 	$scope.goToEdit = function(i){
 		$scope.isEdit = true;

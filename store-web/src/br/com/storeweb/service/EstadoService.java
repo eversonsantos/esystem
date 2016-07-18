@@ -31,7 +31,7 @@ public class EstadoService implements EstadoDAO{
 	public List<Estado> findAllEntitys() {
 		List<Estado> estados = new ArrayList<Estado>();
 		estados.add(new Estado(1L, "Pará", "PA"));
-		estados.add(new Estado(2L, "Bahia", "BH"));
+		estados.add(new Estado(2L, "Bahia", "BA"));
 		estados.add(new Estado(3L, "Santa Catarina", "SC"));
 		estados.add(new Estado(4L, "São Paulo", "SP"));
 		estados.add(new Estado(5L, "Rio de Janeiro", "RJ"));

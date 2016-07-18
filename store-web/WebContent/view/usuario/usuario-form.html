@@ -162,37 +162,46 @@
 														Endereço
 													</legend>
 													<div class="row">
-															<div class="col-md-2">
-																<label>CEP</label> <input class="form-control" value=""
-																	type="text"  />
+															<div class="col-md-3">
+																<label>CEP</label> 
+												              	<div class="input-group">
+													                <input type="text" class="form-control" 
+													                ng-model="cep" maxlength="8" value="" type="text"  placeHolder="00000000">
+													                    <span class="input-group-btn">
+													                      <button type="button" class="btn btn-default" 
+													                      ng-click="searchEndereco();" style="padding: 9px 12px;">
+													                      		<i class="fa fa-search"></i>
+													                      </button>
+													                    </span>
+													             </div>
 															</div>
 									
 															<div class="col-md-6">
 																<label>Logradouro</label> <input class="form-control" value=""
-																	type="text"  />
+																ng-model="logradouro" ng-readonly="isEditEndereco" type="text"  />
 															</div>
 															<div class="col-md-2">
 																<label>Nº</label> <input class="form-control" value=""
-																	type="text" />
+																	type="text" ng-readonly="isEditEndereco" />
 															</div>
 															<div class="col-md-4">
 																<label>UF</label> 
-																<select class="form-control select2" ng-model="user.cd_pes.cd_pfi.cd_uf_nat">
+																<select class="form-control select2" ng-model="uf">
 																  <option selected="selected" value="">Selecione...</option>
-												                  <option ng-repeat="cNaturalidade in comboNaturalidade" value="cNaturalidade">{{cNaturalidade.nm_uf}}</option>
+												                  <option ng-repeat="cNaturalidade in comboNaturalidade" value="cNaturalidade" ng-selected="cNaturalidade.sg_uf == uf">{{cNaturalidade.nm_uf}}</option>
 												                </select>
 															</div>
 															<div class="col-md-6">
 																<label>Cidade</label> <input class="form-control" value=""
-																	type="text" />
+																ng-model="localidade" type="text" ng-readonly="isEditEndereco"/>
 															</div>
 															<div class="col-md-4">
 																<label>Bairro</label> <input class="form-control" value=""
-																	type="text" />
+																ng-model="bairro"	type="text" ng-readonly="isEditEndereco"/>
 															</div>
 															<div class="col-md-8">
 																<label>Complemento</label> <input class="form-control" value=""
-																	type="text"  />
+																ng-model="complemento"	type="text"  ng-readonly="isEditEndereco"/>
 															</div>
 													</div>
 												</fieldset>
@@ -204,19 +213,28 @@
 													<legend>
 														Contato
 													</legend>
-															<input class="form-control" value="" placeholder="Numero de Telefone"	type="text" />
-															<a class="btn btn-block btn-social btn-primary" ng-click="createUser();">
-											                	<i class="fa fa-phone"></i> <b>Adicionar Telefone</b>
-											              	</a>
+														<div class="row">
+															<div class="col-md-2" style="padding-right: 0px">
+																<input class="form-control" maxlength="2" ng-model="telefone.nr_ddd_tel" value="" placeholder="DDD"	type="text" />
+															</div>
+															<div class="col-md-5" style="padding-left: 0px;">
+																<input class="form-control" maxlength="9" ng-model="telefone.nr_tel" value="" placeholder="Numero de Telefone"	type="text" />
+															</div>
+															<div class="col-md-5" style="padding-left: 0px;">
+																<a class="btn btn-block btn-social btn-primary" ng-click="createTelefone();">
+												                	<i class="fa fa-phone"></i> Adicionar Telefone
+												              	</a>
+															</div>
+														</div>
 															<table class="table">
 											             	<tr>
 												             		<td>Telefone</td>
 												             		<td>Funções</td>
 											             	</tr>
-											             	<tr>
-											             			<td>(91)98853-0893</td>
+											             	<tr ng-repeat=" telefone in telefones">
+											             			<td>({{telefone.nr_ddd_tel}}){{telefone.nr_tel}}</td>
 												             		<td>
-												             			<a href="#" class="glyphicon glyphicon-pencil" title="Editar o usuário {{user.cd_pes.nm_pes}}" ng-click="goToEdit($index)"> <b>Editar</b></a>
+												             			<a href="#" class="fa fa-trash-o" title="Excluir Telefone {{user.cd_pes.nm_pes}}" ng-click="goToEdit($index)"> <b>Excluir Telefone</b></a>
 												             		</td>	
 											             	</tr>
 												         </table>
@@ -241,12 +259,18 @@
 										</fieldset>
 									</div>
 						<div class="panel-footer">
-				              <a class="btn btn-block btn-social btn-twitter" ng-click="createUser();">
-				                <i class="fa fa-user-plus"></i> <b>Adicionar usuário</b>
-				              </a>
-				              <a class="btn btn-block btn-social btn-google" ng-click="init();">
-				                <i class="glyphicon glyphicon-ban-circle"></i> <b>Limpar Formulario</b>
-				              </a>
+							<div class="row">
+								<div class="col-md-6">
+					              <a class="btn btn-block btn-social btn-success" ng-click="createUser();">
+					                <i class="fa fa-user-plus"></i> <b>Adicionar usuário</b>
+					              </a>
+					            </div>
+					            <div class="col-md-6">
+					              <a class="btn btn-block btn-social btn-warning" ng-click="init();">
+					                <i class="glyphicon glyphicon-ban-circle"></i> <b>Limpar Formulario</b>
+					              </a>
+					            </div> 
+				            </div>
 						</div>
 					</div>
 </div>

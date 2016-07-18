@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity(name="tbl_contato")
 public class Contato extends EntityDefault{
@@ -25,8 +24,6 @@ public class Contato extends EntityDefault{
 	@JoinColumn(name = "cd_tel")
 	private List<Telefone> telefones;
 	
-//	@OneToOne(mappedBy = "cd_con")
-//	private Pessoa pessoa;
 	
 	public Contato() {
 

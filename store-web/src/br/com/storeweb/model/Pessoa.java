@@ -22,9 +22,9 @@ public class Pessoa extends EntityDefault{
 	@Column(name= "nm_pes")
 	private String nm_pes;
 	
-//	@OneToOne
-//	@JoinColumn(name = "cd_con")
-//	private Contato cd_con;
+	@OneToOne
+	@JoinColumn(name = "cd_con")
+	private Contato cd_con;
 	
 	@Column(name= "nr_cic_pes")
 	private String nr_cic_pes;
@@ -34,8 +34,10 @@ public class Pessoa extends EntityDefault{
 	private PessoaFisica cd_pfi;
 	
 //	private PessoaJuridica pJuridica;
-//	@Column(name= "cod_end_pes")
-//	private Endereco endereco;
+	
+	@OneToOne
+	@JoinColumn(name = "cd_end")
+	private Endereco cd_end;
 
 	public Pessoa() {
 		
@@ -66,13 +68,13 @@ public class Pessoa extends EntityDefault{
 		this.nm_pes = nm_pes;
 	}
 
-//	public Contato getCd_con() {
-//		return cd_con;
-//	}
-//
-//	public void setCd_con(Contato cd_con) {
-//		this.cd_con = cd_con;
-//	}
+	public Contato getCd_con() {
+		return cd_con;
+	}
+
+	public void setCd_con(Contato cd_con) {
+		this.cd_con = cd_con;
+	}
 
 	public String getNr_cic_pes() {
 		return nr_cic_pes;
@@ -89,6 +91,16 @@ public class Pessoa extends EntityDefault{
 	public void setCd_pfi(PessoaFisica cd_pfi) {
 		this.cd_pfi = cd_pfi;
 	}
+
+	public Endereco getCd_end() {
+		return cd_end;
+	}
+
+	public void setCd_end(Endereco cd_end) {
+		this.cd_end = cd_end;
+	}
+	
+	
 
 	
 }
