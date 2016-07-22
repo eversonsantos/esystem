@@ -1,11 +1,20 @@
-angular.module("appUsuario", ["ngLocale"]);
+angular.module("appUsuario", ["ngLocale","blockUI"]).
+	config(function(blockUIConfig){
+		blockUIConfig.message = 'Carregando..';
+//		blockUIConfig.templateUrl = '../../view/template/load.html'; Template Personalizado
+	});
 
-angular.module("appUsuario").controller("controlerUsuario", function($http, $scope){
+angular.module("appUsuario").controller("controlerUsuario", function($http, $scope, $timeout){
 	
 	$scope.users = [];
 	$scope.user;
+	
 	$scope.telefone;
-	$scope.telefones = [];
+	$scope.telefones = [
+	                    	{nr_ddd_tel : '91', nr_tel : '988530893'},
+	                    	{nr_ddd_tel : '91', nr_tel : '37761602'},
+	                    	{nr_ddd_tel : '91', nr_tel : '99998888'}
+	                   ];
 	
 	$scope.comboEscolaridade = [];
 	$scope.comboEstadoCivil = [];
@@ -24,6 +33,26 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 	$scope.bairro = '';
 	$scope.complemento = '';
 	
+	
+	$scope.removeSelecionados = function(telefones, i){
+		$scope.telefones =  telefones.filter(function(telefone){
+			if(telefone != telefones[i])
+			{ 
+				return telefone
+			}
+		});
+		Lobibox.notify('info', {
+			delay: 3000,
+			delayIndicator: false,
+			title: 'Exlusão de Telefone',
+			showClass: 'jumpUp',
+			hideClass: 'zoomOut',
+			position: 'bottom right', //or 'center bottom'
+			msg: 'Telefone excluído com sucesso!.'
+		});
+	}
+	
+	
 	$scope.searchEndereco = function(){
 		var validacep = /^[0-9]{8}$/;
 		
@@ -33,7 +62,7 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 		}
 		
 		$http.get("https://viacep.com.br/ws/"+$scope.cep+"/json/").success(function(data) {
-			console.log(data);
+			$scope.cep = data.cep;
 			$scope.localidade = data.localidade;
 			$scope.logradouro = data.logradouro;
 			$scope.bairro = data.bairro;
@@ -51,33 +80,34 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 			$scope.mat = geraMatricula('USUA');
 		});
 	}
+	
 	var loadEscolaridades = function(){
 		$http.get('http://localhost:8080/store-web/ws/combo/escolaridade').success(function(data) {
 			$scope.comboEscolaridade = data;
-			console.log(data);
+		}).error(function(data) {
+			alert('Erro ao carregar recurso de Escolaridade');
 		});
 	}
 	var loadEstadoCivil = function(){
 		$http.get('http://localhost:8080/store-web/ws/combo/estadocivil').success(function(data) {
 			$scope.comboEstadoCivil = data;
-			console.log(data);
 		});
 	}
 	var loadNacionalidade = function(){
 		$http.get('http://localhost:8080/store-web/ws/combo/nacionalidade').success(function(data) {
 			$scope.comboNacionalidade = data;
-			console.log(data);
 		});
 	}
 	
 	var loadNaturalidade = function(){
 		$http.get('http://localhost:8080/store-web/ws/combo/uf').success(function(data) {
 			$scope.comboNaturalidade = data;
-			console.log(data);
 		});
 	}
 	
-	var postCreateUser = function(){
+	$scope.postCreateUser = function(){
+		parseEndereco();
+		console.log($scope.user);
 		$http.post('http://localhost:8080/store-web/ws/usuario/createUser', $scope.user).success(function(data) {
 			console.log($scope.user);
 		});
@@ -92,6 +122,7 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 	}
 	
 	$scope.createUser = function(){
+		parseEndereco();
 		if($scope.isEdit){
 			$scope.users.splice($scope.index, 1, $scope.user)
 			delete $scope.user;
@@ -108,6 +139,15 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 	$scope.createTelefone = function(){
 		$scope.telefones.push(angular.copy($scope.telefone));
 		delete $scope.telefone;
+		Lobibox.notify('success', {
+			delay: 3000,
+			delayIndicator: false,
+			title: 'Inclusão de Telefone',
+			showClass: 'jumpUp',
+			hideClass: 'zoomOut',
+			position: 'bottom right', //or 'center bottom'
+			msg: 'Telefone adicionado com sucesso!.'
+			});
 	}
 	
 	
@@ -119,6 +159,42 @@ angular.module("appUsuario").controller("controlerUsuario", function($http, $sco
 		$scope.index = i;
 		
 	}
+	
+	$scope.excluiTelefone = function(){
+		$scope.telefones = $scope.telefones.filter(function(elt, i) {
+			return true;
+		})
+	}
+	
+	var parseEndereco = function(){
+		$scope.user.cd_pes.cd_end.cd_cep = $scope.cep;
+		$scope.user.cd_pes.cd_end.nm_cid = $scope.localidade;
+		$scope.user.cd_pes.cd_end.nm_bai = $scope.bairro;
+		$scope.user.cd_pes.cd_end.nm_log = $scope.logradouro;
+//		$scope.user.cd_pes.cd_end.cd_uf = 
+		$scope.comboNaturalidade.filter(function(uf) {
+			if(uf.sg_uf == $scope.uf){
+				$scope.user.cd_pes.cd_end.cd_uf = uf;
+				return true;
+			}
+		});
+//		Lobibox.notify('success', {
+//			delay: 3000,
+//			delayIndicator: false,
+//			size : 'large',
+//			title: 'Endereço',
+//			showClass: 'jumpUp',
+//			hideClass: 'zoomOut',
+//			position: 'bottom right', //or 'center bottom'
+//			msg: 'Cep: '+ $scope.user.cd_pes.cd_end.cd_cep+' <br/>'+
+//					'Cidade: '+ $scope.user.cd_pes.cd_end.nm_cid+' <br/>'+
+//						'Bairro: '+ $scope.user.cd_pes.cd_end.nm_bai+' <br/>'+
+//							'Logradouro: '+ $scope.user.cd_pes.cd_end.nm_log+' <br/>'+
+//									'Estado: '+ $scope.user.cd_pes.cd_end.cd_uf.sg_uf+' <br/>'
+//					
+//			});
+	}
+	
 	$scope.init = function(){
 		delete $scope.user;
 		$scope.isEdit = false;

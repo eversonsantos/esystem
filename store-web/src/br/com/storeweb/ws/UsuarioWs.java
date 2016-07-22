@@ -54,10 +54,10 @@ public class UsuarioWs {
 	}
 	@POST
 	@Path("createUser")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public void createUser( String json){
 		Usuario usuario = new ParseJsonToEntity<Usuario>().fromJsonToEntity(json, Usuario.class);
-		System.out.println(usuario.toString());
+//		System.out.println(usuario.toString());
 	}
 	
 }
