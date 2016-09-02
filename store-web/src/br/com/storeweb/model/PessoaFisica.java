@@ -1,5 +1,7 @@
 package br.com.storeweb.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -52,11 +54,6 @@ public class PessoaFisica {
 		
 	}
 	
-	public PessoaFisica(String nr_rg, String id_sex) {
-		this.nr_rg = nr_rg;
-		this.id_sex = id_sex;
-	}
-
 	public Long getCd_pfis() {
 		return cd_pfis;
 	}
@@ -85,8 +82,12 @@ public class PessoaFisica {
 		return dt_nasc;
 	}
 
-	public void setDt_nasc(Date dt_nasc) {
-		this.dt_nasc = dt_nasc;
+	public void setDt_nasc(String dt_nasc) {
+		try {
+			this.dt_nasc = new SimpleDateFormat("dd/MM/yyyy").parse(dt_nasc);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getId_est_cv() {

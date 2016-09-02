@@ -24,33 +24,24 @@ public class Pessoa extends EntityDefault{
 	
 	@OneToOne
 	@JoinColumn(name = "cd_con")
-	private Contato cd_con;
+	private Contato cd_con = new Contato();
 	
 	@Column(name= "nr_cic_pes")
 	private String nr_cic_pes;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name= "cd_pfi")
-	private PessoaFisica cd_pfi;
+	private PessoaFisica cd_pfi = new PessoaFisica();
 	
 //	private PessoaJuridica pJuridica;
 	
 	@OneToOne
 	@JoinColumn(name = "cd_end")
-	private Endereco cd_end;
+	private Endereco cd_end = new Endereco();
 
 	public Pessoa() {
 		
 	}
-	
-	public Pessoa(Long cd_pes, String nm_pes, String nr_cic_pes, PessoaFisica cd_pfi) {
-	this.cd_pes = cd_pes;
-	this.nm_pes = nm_pes;
-	this.nr_cic_pes = nr_cic_pes;
-	this.cd_pfi = cd_pfi;
-}
-
-
 
 	public Long getCd_pes() {
 		return cd_pes;

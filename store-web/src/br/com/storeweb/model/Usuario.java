@@ -38,21 +38,6 @@ public class Usuario extends EntityDefault implements Serializable{
 	public Usuario() {
 		
 	}
-	
-	
-	
-	public Usuario(long cd_usua, String cd_log_usu, String cd_snh_usu,
-			Pessoa cd_pes, Date dt_inc, String cd_mat_usu) {
-		this.cd_usua = cd_usua;
-		this.cd_log_usu = cd_log_usu;
-		this.cd_snh_usu = cd_snh_usu;
-		this.cd_pes = cd_pes;
-		this.dt_inc = dt_inc;
-		this.cd_mat_usu = cd_mat_usu;
-	}
-
-
-
 	public long getCd_usua() {
 		return cd_usua;
 	}
@@ -90,15 +75,4 @@ public class Usuario extends EntityDefault implements Serializable{
 		this.cd_mat_usu = cd_mat_usu;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Usuario [cd_usua=" + cd_usua + ", cd_mat_usu=" + cd_mat_usu
-				+ ", cd_log_usu=" + cd_log_usu + ", cd_snh_usu=" + cd_snh_usu
-				+ ", cd_pes=" + cd_pes.getCd_pfi().getId_nv_esc() + ", dt_inc=" + dt_inc + "]";
-	}
-	
-	
-	
 }

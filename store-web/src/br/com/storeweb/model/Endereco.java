@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Entity(name = "tbl_endereco")
 public class Endereco {
@@ -27,9 +25,8 @@ public class Endereco {
 	@Column(name = "nm_log", length = 100)
 	private String nm_log;
 	
-	@OneToOne
-	@JoinColumn(name = "cd_uf")
-	private Estado cd_uf;
+	@Column(name = "cd_uf")
+	private String cd_uf;
 	
 	@Column(name = "ds_com", length = 255)
 	private String ds_com;
@@ -77,11 +74,11 @@ public class Endereco {
 		this.nm_log = nm_log;
 	}
 
-	public Estado getCd_uf() {
+	public String getCd_uf() {
 		return cd_uf;
 	}
 
-	public void setCd_uf(Estado cd_uf) {
+	public void setCd_uf(String cd_uf) {
 		this.cd_uf = cd_uf;
 	}
 

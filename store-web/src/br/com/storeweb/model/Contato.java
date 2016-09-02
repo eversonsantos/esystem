@@ -1,5 +1,6 @@
 package br.com.storeweb.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,7 +23,7 @@ public class Contato extends EntityDefault{
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_tel")
-	private List<Telefone> telefones;
+	private List<Telefone> telefones = new ArrayList<Telefone>();
 	
 	
 	public Contato() {
