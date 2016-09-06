@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="appMain">
+<head >
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="resources/lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="resources/app/js/controllers/app.js"></script>
+</head>
+<body ng-controller="ctrl">
+		<div ng-repeat="p in produtos">
+			{{p.nome}}
+		</div>
+		<input ng-model="produto.id" type="text">
+		<input ng-model="produto.nome" type="text">
+		<button ng-click="addCliente();">Create</button>
+</body>
+</html>

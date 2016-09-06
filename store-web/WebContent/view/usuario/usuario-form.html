@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Import de JavaScript -->
+<title>Usuarios Cadastros</title>
+
+</head>
+<body>
+<div class="wrapper">
+					<div class="box box-primary">
+			            <div class="box-header with-border">
+			              <h2 class="box-title">
+			              	<span class="fa fa-lg fa-user">Cadastro de Usuário</span>
+			              	</h2>
+			            </div>
+									<div class="box-body">
+											<fieldset>
+												<legend style="margin-bottom: 0px;">Informações Pessoais</legend>
+											
+												<div class="row">
+													<div class="col-xs-2">
+														<label>Matricula</label> <input class="form-control"
+															disabled="disabled" value="{{mat}}" />
+													</div>
+							
+													<div class="col-xs-2">
+														<label>Data Inclusão</label> <input class="form-control"
+															disabled="disabled"
+															value="" />
+													</div>
+													<div class="col-xs-2">
+														<label>CPF</label> <input class="form-control" value=""
+															onkeyup="maskIt(this,event,'###.###.###-##')"
+															ng-model="usuarioDTO.pessoa.nr_cic_pes" />
+													</div>
+													<div class="col-xs-6">
+														<label>Nome</label> 
+														<input class="form-control"	ng-model="usuarioDTO.pessoa.nm_pes"/>
+													</div>
+												</div>
+												<div class="row">
+													
+													<div class="col-md-2">
+														<label>RG</label> 
+														<input class="form-control"	ng-model="usuarioDTO.pessoaFisica.nr_rg"/>
+													</div>
+													<div class="col-md-2">
+														<label>Sexo</label> 
+														<select class="form-control select2" ng-model="usuarioDTO.pessoaFisica.id_sex">
+														  <option selected="selected" value="">Selecione...</option>
+										                  <option value="M">Masculino</option>
+										                  <option value="F">Feminio</option>
+										                </select>
+													</div>
+													<div class="col-md-2">
+														<label>Data Nascimento</label> <input ng-model="usuarioDTO.pessoaFisica.dt_nasc" class="form-control" value="" 
+															onkeyup="maskIt(this,event,'##/##/####')" maxlength="12"/>
+													</div>
+													<div class="col-md-3">
+														<label>Escolaridade</label> 
+														<select class="form-control select2" ng-options="cEscolaridade for cEscolaridade in comboEscolaridade"	ng-model="usuarioDTO.pessoaFisica.id_nv_esc">
+														  <option selected="selected" value="">Selecione...</option>
+										                </select>
+													</div>
+													<div class="col-md-2">
+														<label>Estado Civil</label> 
+														<select class="form-control select2" ng-model="usuarioDTO.pessoaFisica.id_est_cv" ng-options="cEstadoCivil for cEstadoCivil in comboEstadoCivil">
+														  <option selected="selected" value="">Selecione...</option>
+										                </select>
+													</div>
+													<div class="col-md-2">
+														<label>Nacionalidade</label> 
+														<select class="form-control select2"  ng-model="usuarioDTO.pessoaFisica.cd_nac" 
+																ng-options="cNacionalidade.nm_pais for cNacionalidade in comboNacionalidade">
+														  <option selected="selected" value="">Selecione...</option>
+										                </select>
+													</div>
+													<div class="col-md-2">
+														<label>Naturalidade</label> 
+														<select class="form-control select2" ng-model="usuarioDTO.pessoaFisica.cd_uf_nat"
+																ng-options="cNaturalidade.nm_uf for cNaturalidade in comboNaturalidade">
+														  <option selected="selected" value="">Selecione...</option>
+										                </select>
+													</div>
+													<div class="col-md-4">
+														<label>Nome do Pai</label> 
+														<input class="form-control"	ng-model="usuarioDTO.pessoaFisica.nm_pai"/>
+													</div>
+													<div class="col-md-4">
+														<label>Nome da Mãe</label> 
+														<input class="form-control"	ng-model="usuarioDTO.pessoaFisica.nm_mae"/>
+													</div>
+		
+												</div>
+											</fieldset>	
+<!-- 										Endereço Inicio -->
+										<div class="row">
+											<div class="col-md-7">
+												<fieldset>
+													<legend style="margin-bottom: 0px;">
+														Endereço
+													</legend>
+													<div class="row">
+															<div class="col-md-3">
+																<label>CEP</label> 
+												              	<div class="input-group">
+													                <input id="cep_txt" onkeyup="maskIt(this,event,'########')" type="text" class="form-control" 
+													                ng-model="usuarioDTO.endereco.cd_cep" maxlength="8" value="" type="text"  placeHolder="00000000">
+													                    <span class="input-group-btn">
+													                      <button type="button" class="btn btn-default" 
+													                      ng-click="searchEndereco();">
+													                      		<i class="fa fa-search"></i>
+													                      </button>
+													                    </span>
+													             </div>
+															</div>
+									
+															<div class="col-md-9">
+																<label>Logradouro</label> <input class="form-control" value=""
+																ng-model="usuarioDTO.endereco.nm_log" ng-readonly="isEditEndereco" type="text"  />
+															</div>
+															<div class="col-md-2">
+																<label>Nº</label> <input id="nr_txt" class="form-control" value="" ng-model="usuarioDTO.endereco.nr_en"
+																	type="text" ng-readonly="isEditEndereco" />
+															</div>
+															<div class="col-md-4">
+																<label>UF</label> 
+																<select id="cb_uf_en" class="form-control select2" ng-model="usuarioDTO.endereco.cd_uf" disabled="true">
+																  <option selected="selected" value="" >Selecione...</option>
+												                  <option ng-repeat="cNaturalidade in comboNaturalidade" value="cNaturalidade" ng-selected="cNaturalidade.sg_uf == usuarioDTO.endereco.cd_uf">{{cNaturalidade.nm_uf}}</option>
+												                </select>
+															</div>
+															<div class="col-md-6">
+																<label>Cidade</label> <input class="form-control" value=""
+																ng-model="usuarioDTO.endereco.nm_cid" type="text" ng-readonly="isEditEndereco"/>
+															</div>
+															<div class="col-md-4">
+																<label>Bairro</label> <input class="form-control" value=""
+																ng-model="usuarioDTO.endereco.nm_bai"	type="text" ng-readonly="isEditEndereco"/>
+															</div>
+															<div class="col-md-8">
+																<label>Complemento</label> <input class="form-control" value=""
+																ng-model="usuarioDTO.endereco.ds_com"	type="text"  ng-readonly="isEditEndereco"/>
+															</div>
+													</div>
+												</fieldset>
+											</div>
+<!-- 										Endereço Fim	 -->
+<!-- 											Contato Inicio -->
+											<div class="col-md-5">		
+												<fieldset>
+													<legend style="margin-bottom: 0px;">
+														Contato
+													</legend>
+														<div class="row">
+															<div class="col-md-2" style="padding-right: 0px">
+																<input id="ddd_txt" onkeyup="maskIt(this,event,'##')"  class="form-control" maxlength="2" ng-model="telefone.nr_ddd_tel" value="" placeholder="DDD"	type="text" />
+															</div>
+															<div class="col-md-5" style="padding-left: 0px;">
+																<input id="tel_txt" onkeyup="maskIt(this,event,'#########')"  class="form-control" maxlength="9" ng-model="telefone.nr_tel" value="" placeholder="Numero de Telefone"	type="text" />
+															</div>
+															<div class="col-md-5" style="padding-left: 0px;">
+																<button class="btn btn-block btn-social btn-primary" ng-click="createTelefone();" style="font-size: 13px;">
+												                	<i class="fa fa-phone"></i> Adicionar Telefone
+												              	</button>
+															</div>
+														</div>
+														
+															<table class="table table-striped" style="margin-bottom: -10px;">
+												             	<tr>	
+													             		<td>Telefone</td>
+													             		<td>Funções</td>
+												             	</tr>
+												             	<tr ng-repeat=" telefone in usuarioDTO.telefones" >
+												             			<td style="padding: 6px;">({{telefone.nr_ddd_tel}}){{telefone.nr_tel}}</td>
+													             		<td style="padding: 0px;">
+													             			<button title="Remover Telefone" id="btn_remove"  ng-click="removeSelecionados(usuarioDTO.telefones, $index)" class="btn btn-link"><b>Remover</b></button>
+													             		</td>	
+												             	</tr>
+												          </table>
+												</fieldset>
+											</div>
+										</div>	
+<!-- 											Contato Fim -->
+										<fieldset>
+											<legend style="margin-bottom: 0px;">
+												Acesso ao Sistema
+											</legend>
+											<div class="row">
+												<div class="col-md-4">
+													<label>E-Mail</label> <input class="form-control" value=""
+														ng-model="usuarioDTO.usuario.cd_log_usu" type="text" />
+												</div>
+												<div class="col-md-4">
+													<label>Senha</label> <input class="form-control" value=""
+														ng-model="usuarioDTO.usuario.cd_snh_usu" type="password" />
+												</div>
+											</div>	
+										</fieldset>
+									</div>
+						<div class="panel-footer">
+							<div class="row">
+								<div class="col-md-4">
+					              <a class="btn btn-block btn-social btn-success" ng-click="postCreateUser();">
+					                <i class="fa fa-user-plus"></i> <b>Salvar e Continuar</b>
+					              </a>
+					            </div>
+					            <div class="col-md-4">
+					              <a class="btn btn-block btn-social btn-dropbox" ng-click="imprimi();">
+					                <i class="fa fa-rotate-left"></i> <b>Salvar e Voltar</b>
+					              </a>
+					            </div>
+					            <div class="col-md-4">
+					              <a class="btn btn-block btn-social btn-google" ng-click="init();">
+					                <i class="glyphicon glyphicon-ban-circle"></i> <b>Limpar Formulario</b>
+					              </a>
+					            </div> 
+				            </div>
+						</div>
+					</div>
+</div>
+</body>
+</html>
