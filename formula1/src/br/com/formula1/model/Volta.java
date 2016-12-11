@@ -3,16 +3,20 @@ package br.com.formula1.model;
 public class Volta {
 
 	private Integer nrVolta;
-	private Long tmVolta;
+	private String tmVolta;
 	private Integer nrPosicao;
 	private Double vlMedia;
+	private String hrVolta;
 	
-	public Volta(Integer nrVolta, Long tmVolta, Integer nrPosicao,
-			Double vlMedia) {
+	public Volta() {
+	}
+	
+	public Volta(Integer nrVolta, String tmVolta, Integer nrPosicao, Double vlMedia, String hrVolta) {
 		this.nrVolta = nrVolta;
 		this.tmVolta = tmVolta;
 		this.nrPosicao = nrPosicao;
 		this.vlMedia = vlMedia;
+		this.hrVolta = hrVolta;
 	}
 	public Integer getNrVolta() {
 		return nrVolta;
@@ -20,10 +24,10 @@ public class Volta {
 	public void setNrVolta(Integer nrVolta) {
 		this.nrVolta = nrVolta;
 	}
-	public Long getTmVolta() {
+	public String getTmVolta() {
 		return tmVolta;
 	}
-	public void setTmVolta(Long tmVolta) {
+	public void setTmVolta(String tmVolta) {
 		this.tmVolta = tmVolta;
 	}
 	public Integer getNrPosicao() {
@@ -38,5 +42,12 @@ public class Volta {
 	public void setVlMedia(Double vlMedia) {
 		this.vlMedia = vlMedia;
 	}
-	
+
+	public String getHrVolta() {
+		return hrVolta;
+	}
+
+	public void setHrVolta(String hrVolta) {
+		this.hrVolta = hrVolta;
+	}
 }
