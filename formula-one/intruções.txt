@@ -2,5 +2,7 @@
 Java Version : 1.7
 JUnit Version : 4.0
 
+*O arquivo .txt deve possuir 77 caracteres.
+
 *Executar a classe Form.java
 *Importar o arquivo .txt
