@@ -135,6 +135,7 @@ public class Form extends JFrame {
 			    									piloto.getCdPil()+" - "+piloto.getNmPil(), 
 			    									piloto.getTmMelhorVolta(), 
 			    									piloto.getNrMelhorVolta(), 
+			    									piloto.getVoltas().size(),
 			    									piloto.getVlMediaDuranteCorrida(),
 			    									piloto.getTmTotalProva(), 
 			    									piloto.getTmProvaAposGanhador()});
@@ -158,7 +159,7 @@ public class Form extends JFrame {
 	public void criaTablePilotos(){
 		tbPilotos = new JTable();
 		modelTablePilotos.setColumnIdentifiers(new String[] {
-				"Posição", "Piloto", "Melhor Volta", "Nº Volta", "Velocidade Média", "Tempo Prova", "Tempo Após Ganhador"
+				"Posição", "Piloto", "Melhor Volta", "Nº Volta", "Voltas Completadas", "Velocidade Média", "Tempo Prova", "Tempo Após Ganhador"
 		});
 		tbPilotos.setModel(modelTablePilotos);
 		tbPilotos.setBounds(5, 35, 679, 143);
