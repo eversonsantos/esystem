@@ -1,0 +1,6 @@
+=================Especificações=========================
+Java Version : 1.7
+JUnit Version : 4.0
+
+*Executar a classe Form.java
+*Importar o arquivo .txt
