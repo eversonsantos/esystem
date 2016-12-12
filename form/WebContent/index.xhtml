@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+	<h:form id="form" enctype="multipart/form-data">
+	<p> <h:messages id="messages" /></p>
+        <h:outputLabel value="Arquivo" for="arquivo" />
+        <h:inputFile id="arquivo" value="#{mbCorridaDetalhe.file}" 
+            required="true" label="Arquivo" validator="#{mbCorridaDetalhe.valida}"/>
+		<br/>
+		<br/>
+		<br/>
+        <h:commandButton value="Upload"  action="#{mbCorridaDetalhe.uploadFile()}" />
+        <h:commandButton value="Limpar"  action="#{mbCorridaDetalhe.clean()}">
+        	<f:ajax render="@all"/>
+        </h:commandButton>
+    </h:form>
+    <h:dataTable value="#{mbCorridaDetalhe.pilotos}" var="piloto" rendered="#{mbCorridaDetalhe.pilotos.size() > 0}">
+    	<h:column>
+    		<f:facet name="header">Código Piloto</f:facet>
+    		<h:outputText value="#{piloto.cdPil}" />
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Piloto</f:facet>
+    		<h:outputText value="#{piloto.nmPil}" />
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Posição</f:facet>
+    		<h:outputText value="#{piloto.nrPosicao}" />
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Voltas Completadas</f:facet>
+    		<h:outputText value="#{piloto.nrVoltasCompletadas}" />
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Melhor Volta</f:facet>
+    		<h:outputText value="#{piloto.tmMelhorVolta}" />
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Média Vel. Corrida</f:facet>
+    		<h:outputText value="#{piloto.vlMediaDuranteCorrida}" />
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Tempo Total Prova</f:facet>
+    		<h:outputText value="#{piloto.tmTotalProva}" />
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">Tempo Após Ganhador</f:facet>
+    		<h:outputText value="#{piloto.tmProvaAposGanhador}" />
+    	</h:column>
+    </h:dataTable>
+</body> 
+</html>
