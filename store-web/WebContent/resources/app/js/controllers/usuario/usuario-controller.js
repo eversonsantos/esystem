@@ -9,7 +9,6 @@ angular.module("sessaoUsuarioApp").controller("usuarioPrincipal", function($http
 	$scope.comboNacionalidade = [];
 	$scope.comboNaturalidade = [];
 	
-	$scope.mat;
 	$scope.isEdit = false;
 	$scope.index;
 	$scope.isEditEndereco = true;
@@ -99,12 +98,10 @@ angular.module("sessaoUsuarioApp").controller("usuarioPrincipal", function($http
 	
 	$scope.postCreateUser = function(){
 		
-		$scope.usuarioDTO.usuario.cd_mat_usu = $scope.mat;
 		$http.post('http://localhost:8080/store-web/ws/usuario/createUser', $scope.usuarioDTO).success(function(data) {
 			
 		});
 		$scope.usuarioDTO = new Object();
-		$scope.mat = geraMatricula('USUA', 1);
 	}
 	
 	$scope.createUser = function(){
@@ -112,11 +109,8 @@ angular.module("sessaoUsuarioApp").controller("usuarioPrincipal", function($http
 			$scope.users.splice($scope.index, 1, $scope.user)
 			delete $scope.user;
 			$scope.isEdit = false;
-			$scope.mat = geraMatricula('USUA', 1);
 		}else{
-			$scope.user.cd_mat_usu = $scope.mat;
 			$scope.users.push(angular.copy($scope.user));
-			$scope.mat = geraMatricula('USUA', 1);
 			delete $scope.user;
 		}
 	}
@@ -145,7 +139,6 @@ angular.module("sessaoUsuarioApp").controller("usuarioPrincipal", function($http
 	
 	$scope.init = function(){
 		$scope.isEdit = false;
-		$scope.mat = geraMatricula('USUA', 1);
 		$scope.dateToday = new Date();
 	}
 	$scope.init();
