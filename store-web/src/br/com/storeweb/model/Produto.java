@@ -12,53 +12,47 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * @author everson.lisboa.santos@gmail.com
- *Data : 23/06/2016
+ * @author everson.lisboa.santos@gmail.com Data : 23/06/2016
  *
  */
 @Entity(name = "tbl_produto")
-public class Produto extends EntityDefault{
-	
+public class Produto extends EntityDefault {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long cd_prd;
-	
-	@Column(name="nm_prd", length = 150, nullable = false)
-	private String nm_prd;
-	
+	private long codigo;
+
+	@Column(name = "nm_prd")
+	private String nome;
+
 	@Column(name = "vr_prd")
-	private BigDecimal vr_prd;
-	
+	private BigDecimal valor;
+
 	public Produto() {
 	}
 
-	public Produto(long cd_prd, String nm_prd, BigDecimal vr_prd) {
-		this.cd_prd = cd_prd;
-		this.nm_prd = nm_prd;
-		this.vr_prd = vr_prd;
+	public long getCodigo() {
+		return codigo;
 	}
 
-	public long getCd_prd() {
-		return cd_prd;
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
 
-	public void setCd_prd(long cd_prd) {
-		this.cd_prd = cd_prd;
+	public String getNome() {
+		return nome;
 	}
 
-	public String getNm_prd() {
-		return nm_prd;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public void setNm_prd(String nm_prd) {
-		this.nm_prd = nm_prd;
+	public BigDecimal getValor() {
+		return valor;
 	}
 
-	public BigDecimal getVr_prd() {
-		return vr_prd;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
-	public void setVr_prd(BigDecimal vr_prd) {
-		this.vr_prd = vr_prd;
-	}
 }

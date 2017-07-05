@@ -1,4 +1,4 @@
-package br.com.storeweb.ws;
+package br.com.storeweb.resources;
 
 import br.com.storeweb.service.MenuService;
 

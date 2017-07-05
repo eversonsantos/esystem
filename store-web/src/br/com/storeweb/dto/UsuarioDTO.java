@@ -19,8 +19,8 @@ public class UsuarioDTO extends PessoaDTO{
 		
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("CPF: ").append(this.getPessoa().getNr_cic_pes()).append("\n");
-		sb.append("Nome: ").append(this.getPessoa().getNm_pes()).append("\n");
+//		sb.append("CPF: ").append(this.getPessoa().getNr_cic_pes()).append("\n");
+//		sb.append("Nome: ").append(this.getPessoa().getNm_pes()).append("\n");
 		sb.append("RG: ").append(this.getPessoaFisica().getNr_rg()).append("\n");
 		sb.append("Sexo: ").append(this.getPessoaFisica().getId_sex()).append("\n");
 		sb.append("Nacionalidade: ").append(this.getPessoaFisica().getCd_nac().getNm_pais()).append("\n");
