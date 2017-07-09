@@ -1,4 +1,4 @@
-package br.com.storeweb.ws;
+package br.com.storeweb.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
