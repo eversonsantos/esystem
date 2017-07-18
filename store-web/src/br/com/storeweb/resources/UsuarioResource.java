@@ -28,7 +28,7 @@ public class UsuarioResource {
 	@Path("login/{login}/{senha}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Usuario autenticaUsuario (@PathParam("login") String login, 
-								@PathParam("senha") String senha){
+										@PathParam("senha") String senha){
 		Usuario usuario = usuarioService.getUsuarioByLoginSenha(login, senha);
 		
 		if(usuario == null){
