@@ -1,15 +1,11 @@
 package br.com.storeweb.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import br.com.storeweb.dao.PaisDAO;
 import br.com.storeweb.model.Pais;
-import br.com.storeweb.model.Pessoa;
-import br.com.storeweb.model.PessoaFisica;
-import br.com.storeweb.model.Usuario;
 
 public class PaisService implements PaisDAO{
 
