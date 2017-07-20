@@ -9,8 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity(name = "tbl_menu")
+
+@Entity
+@Table(name = "tbl_menu", schema = "dbo")
 public class Menu {
 	
 	@Id

@@ -17,7 +17,7 @@ public class UsuarioService{
 	
 	
 	public List<Usuario> listaUsuarios(){
-		logger.info("Vai buscar todos os usu·rios");
+		logger.info("Vai buscar todos os usu√°rios");
 		return dao.findAllEntitys();
 	}
 	

@@ -12,8 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-
-@Entity(name="tbl_contato")
+import javax.persistence.Table;
+@Entity
+@Table(name="tbl_contato", schema = "dbo")
 public class Contato extends EntityDefault{
 
 	@Id

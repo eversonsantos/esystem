@@ -5,8 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-@Entity(name = "tbl_estado")
+import javax.persistence.Table;
+@Entity
+@Table(name = "tbl_estado", schema = "dbo")
 public class Estado extends EntityDefault{
 
 	@Id

@@ -10,10 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity(name = "tbl_usuario")
+@Entity
+@Table(name = "tb_usuario", schema = "dbo")
 public class Usuario extends EntityDefault implements Serializable {
 
 	/**
@@ -22,7 +24,7 @@ public class Usuario extends EntityDefault implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "cd_usua")
 	private long cdUsuario;
 
@@ -34,7 +36,7 @@ public class Usuario extends EntityDefault implements Serializable {
 
 	@Column(name = "cd_snh_usu", length = 20)
 	private String cdSenha;
-
+//
 	@OneToOne
 	@JoinColumn(name = "cd_pes")
 	private Pessoa pessoa;

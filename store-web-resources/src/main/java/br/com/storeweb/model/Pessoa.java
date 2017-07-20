@@ -8,8 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Entity(name = "tbl_pessoa")
+
+@Entity
+@Table(name = "tbl_pessoa", schema = "dbo")
 public class Pessoa extends EntityDefault {
 
 	@Id

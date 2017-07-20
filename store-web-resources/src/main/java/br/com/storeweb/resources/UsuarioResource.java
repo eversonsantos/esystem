@@ -50,7 +50,7 @@ public class UsuarioResource {
 	public Response getUsuario(@PathParam("codigo") long codigo){
 		Usuario usuario = usuarioService.getUsuario(codigo);
 		if(usuario == null){
-			return Response.status(Status.NOT_FOUND).entity("Usu·rio com o cÛdigo informado, n„o encontrado").build();
+			return Response.status(Status.NOT_FOUND).entity("Usu√°rio com o c√≥digo informado, n√£o encontrado").build();
 		}
 		return Response.ok(new Gson().toJson(usuario), MediaType.APPLICATION_JSON).build();
 	}
@@ -63,7 +63,7 @@ public class UsuarioResource {
 		try {
 			usuario = new Gson().fromJson(json, Usuario.class);
 			usuarioService.criaUsuario(usuario);
-			return Response.status(Status.CREATED).entity("Usu·rio criado com sucesso!").build();
+			return Response.status(Status.CREATED).entity("Usu√°rio criado com sucesso!").build();
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Erro ao criar usuario ").build();
 		}

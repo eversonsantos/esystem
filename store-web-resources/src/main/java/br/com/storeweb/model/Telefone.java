@@ -7,8 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity(name = "tbl_telefone")
+@Entity
+@Table(name = "tbl_telefone", schema = "dbo")
 public class Telefone extends EntityDefault{
 	
 	@Id
