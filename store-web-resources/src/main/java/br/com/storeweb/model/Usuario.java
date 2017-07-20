@@ -3,6 +3,7 @@ package br.com.storeweb.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "tb_usuario", schema = "dbo")
+@Table(name = "tbl_usuario", schema = "dbo")
 public class Usuario extends EntityDefault implements Serializable {
 
 	/**
@@ -37,7 +38,7 @@ public class Usuario extends EntityDefault implements Serializable {
 	@Column(name = "cd_snh_usu", length = 20)
 	private String cdSenha;
 //
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cd_pes")
 	private Pessoa pessoa;
 

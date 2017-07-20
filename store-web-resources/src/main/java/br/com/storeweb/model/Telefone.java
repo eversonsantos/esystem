@@ -18,22 +18,19 @@ public class Telefone extends EntityDefault{
 	private Long cd_tel;
 	
 	@Column(name = "nr_tel")
-	private Integer nr_tel;
+	private Integer nrTelefone;
 	
 	@Column(name = "nr_ddd_tel")
-	private Integer nr_ddd_tel;
-	
-	@Column(name = "sg_tel_wap")
-	private boolean sg_tel_wap;
+	private Integer dddTelefone;
 	
 	@ManyToOne
 	@JoinColumn(name = "cd_con")
-	private Contato cd_con;
+	private Contato contato;
 	
 	public Telefone() {
 		
 	}
-	
+
 	public Long getCd_tel() {
 		return cd_tel;
 	}
@@ -42,29 +39,28 @@ public class Telefone extends EntityDefault{
 		this.cd_tel = cd_tel;
 	}
 
-	public Integer getNr_tel() {
-		return nr_tel;
+	public Integer getNrTelefone() {
+		return nrTelefone;
 	}
 
-	public void setNr_tel(Integer nr_tel) {
-		this.nr_tel = nr_tel;
+	public void setNrTelefone(Integer nrTelefone) {
+		this.nrTelefone = nrTelefone;
 	}
 
-	public Integer getNr_ddd_tel() {
-		return nr_ddd_tel;
+	public Integer getDddTelefone() {
+		return dddTelefone;
 	}
 
-	public void setNr_ddd_tel(Integer nr_ddd_tel) {
-		this.nr_ddd_tel = nr_ddd_tel;
+	public void setDddTelefone(Integer dddTelefone) {
+		this.dddTelefone = dddTelefone;
 	}
 
-	public boolean isSg_tel_wap() {
-		return sg_tel_wap;
+	public Contato getContato() {
+		return contato;
 	}
 
-	public void setSg_tel_wap(boolean sg_tel_wap) {
-		this.sg_tel_wap = sg_tel_wap;
+	public void setContato(Contato contato) {
+		this.contato = contato;
 	}
 	
-
 }

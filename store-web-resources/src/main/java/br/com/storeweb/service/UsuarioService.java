@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 
 import br.com.storeweb.dao.UsuarioDAO;
 import br.com.storeweb.dominio.DominioSituacao;
+import br.com.storeweb.model.Pessoa;
 import br.com.storeweb.model.Usuario;
 
 public class UsuarioService{
@@ -18,6 +19,7 @@ public class UsuarioService{
 	
 	public List<Usuario> listaUsuarios(){
 		logger.info("Vai buscar todos os usuários");
+		createUsuarios();
 		return dao.findAllEntitys();
 	}
 	
@@ -50,7 +52,15 @@ public class UsuarioService{
 			u.setCdMatricula("USA-000"+i);
 			u.setIdSit(DominioSituacao.ATIVO);
 			u.setCdUsuarioAtulizador("admin"+i);
-//			dao.saveEntity(u);
+			
+			Pessoa p = new Pessoa();
+			p.setNome("Everson"+i);
+			p.setNrCic("01407590260"+i);
+			p.setIdSit(DominioSituacao.ATIVO);
+			p.setDhAtualizacao(new Date());
+			
+			u.setPessoa(p);
+			dao.saveEntity(u);
 //			usuarios.add(u);
 		}
 	}

@@ -1,6 +1,5 @@
 package br.com.storeweb.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,11 +27,7 @@ public class Pessoa extends EntityDefault {
 	private Contato contato;
 
 	@Column(name = "nr_cic_pes")
-	private String cpfCNPJ;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cd_pfi")
-	private PessoaFisica pessoaFisica;
+	private String nrCic;
 
 	@OneToOne
 	@JoinColumn(name = "cd_end")
@@ -66,21 +61,21 @@ public class Pessoa extends EntityDefault {
 		this.contato = contato;
 	}
 
-	public String getCpfCNPJ() {
-		return cpfCNPJ;
+	public String getNrCic() {
+		return nrCic;
 	}
 
-	public void setCpfCNPJ(String cpfCNPJ) {
-		this.cpfCNPJ = cpfCNPJ;
+	public void setNrCic(String cpfCNPJ) {
+		this.nrCic = cpfCNPJ;
 	}
 
-	public PessoaFisica getPessoaFisica() {
-		return pessoaFisica;
-	}
-
-	public void setPessoaFisica(PessoaFisica pessoaFisica) {
-		this.pessoaFisica = pessoaFisica;
-	}
+//	public PessoaFisica getPessoaFisica() {
+//		return pessoaFisica;
+//	}
+//
+//	public void setPessoaFisica(PessoaFisica pessoaFisica) {
+//		this.pessoaFisica = pessoaFisica;
+//	}
 
 	public Endereco getEndereco() {
 		return endereco;

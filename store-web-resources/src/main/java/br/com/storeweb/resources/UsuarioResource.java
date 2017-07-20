@@ -45,7 +45,7 @@ public class UsuarioResource {
 	} 
 	
 	@GET
-	@Path("user/{codigo}")
+	@Path("find/{codigo}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getUsuario(@PathParam("codigo") long codigo){
 		Usuario usuario = usuarioService.getUsuario(codigo);

@@ -45,12 +45,11 @@ public class PersistenceService<T> implements GenericDAO<T, Long> {
 
 			manager.persist(entity);
 			manager.getTransaction().commit();
-			manager.flush();
+			
 		} catch (Exception e) {
 			manager.getTransaction().rollback();
 			throw new RuntimeException(e);
 		} finally {
-
 			if (manager.getTransaction().isActive()) {
 				manager.getTransaction().rollback();
 			}
@@ -59,15 +58,12 @@ public class PersistenceService<T> implements GenericDAO<T, Long> {
 	}
 
 
-	@SuppressWarnings("unchecked")
 	public List<T> findAllEntitys() {
-		Session session = (Session) manager.getDelegate();
-		return session.createCriteria(persistentClass).list();
+		return null;	
 	}
 
 	public T findEntityByPk(Long codigo) {
-		// TODO Auto-generated method stub
-		return null;
+		return manager.find(persistentClass, codigo);
 	}
 
 	public List<T> filter(T entity, Map<String, String> parm) {
