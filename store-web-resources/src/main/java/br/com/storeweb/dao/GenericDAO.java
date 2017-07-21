@@ -16,7 +16,6 @@ public interface GenericDAO <T, Cd_pk extends Serializable> {
 		public T findEntityByPk(Cd_pk codigo);
 		public void saveEntity(T entity);
 		public List<T> filter(T entity, Map<String, String> parm);
-		public List<T> findAllEntitys();
 		public T findEntityByPk(Long cd_pk);
 		
 }

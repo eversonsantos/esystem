@@ -9,8 +9,10 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
-import org.hibernate.Session;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Root;
 
 import br.com.storeweb.dao.GenericDAO;
 
@@ -58,9 +60,6 @@ public class PersistenceService<T> implements GenericDAO<T, Long> {
 	}
 
 
-	public List<T> findAllEntitys() {
-		return null;	
-	}
 
 	public T findEntityByPk(Long codigo) {
 		return manager.find(persistentClass, codigo);

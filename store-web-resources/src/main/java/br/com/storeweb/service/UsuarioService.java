@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.hibernate.criterion.Restrictions;
 
 import br.com.storeweb.dao.UsuarioDAO;
 import br.com.storeweb.dominio.DominioSituacao;
@@ -20,7 +19,8 @@ public class UsuarioService{
 	public List<Usuario> listaUsuarios(){
 		logger.info("Vai buscar todos os usuários");
 		createUsuarios();
-		return dao.findAllEntitys();
+		logger.info("Ultimo sequence gerado "+ dao.getSequence());
+		return dao.getListaUsuarios();
 	}
 	
 	public Usuario getUsuario(Long codigo){
@@ -29,15 +29,14 @@ public class UsuarioService{
 	
 	public Usuario getUsuarioByLoginSenha(String login, String senha){
 		
-		return (Usuario) dao.getSession().createCriteria(Usuario.class)
-													.add(Restrictions.eq("", login))
-													.add(Restrictions.eq("senha", senha))
-													.uniqueResult();
+		return null;
 	}
 	
 	public void criaUsuario(Usuario usuario){
 		dao.saveEntity(usuario);
 	}
+	
+	
 	
 	
 	public static void createUsuarios(){
@@ -50,13 +49,13 @@ public class UsuarioService{
 			u.setDsLogin("admin"+i);
 			u.setCdSenha("admin"+i);
 			u.setCdMatricula("USA-000"+i);
-			u.setIdSit(DominioSituacao.ATIVO);
+			u.setIdSit(DominioSituacao.ATIVO.getValue());
 			u.setCdUsuarioAtulizador("admin"+i);
 			
 			Pessoa p = new Pessoa();
 			p.setNome("Everson"+i);
 			p.setNrCic("01407590260"+i);
-			p.setIdSit(DominioSituacao.ATIVO);
+			p.setIdSit(DominioSituacao.ATIVO.getValue());
 			p.setDhAtualizacao(new Date());
 			
 			u.setPessoa(p);

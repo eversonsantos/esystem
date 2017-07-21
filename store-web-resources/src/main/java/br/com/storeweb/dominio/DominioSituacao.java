@@ -5,7 +5,7 @@ public enum DominioSituacao {
 	ATIVO("AT","Ativo"),
 	INATIOV("IA","Inativo"),
 	SUSPENSO("SU", "Suspenso"),
-	EXCLUIDO("EX", "Excluído"),
+	EXCLUIDO("EX", "ExcluÃ­do"),
 	CANCELADO("CA", "Cancelado"),
 	ENCAMINHADO("EN", "Encaminhado"),
 	ESGOTADO("ES", "Esgotado"),
@@ -16,9 +16,7 @@ public enum DominioSituacao {
 	private String value;
 	private String description;
 	
-	private DominioSituacao(
-					String value,
-					String description) {
+	private DominioSituacao(String value,String description) {
 		this.value = value;
 		this.description = description;
 		

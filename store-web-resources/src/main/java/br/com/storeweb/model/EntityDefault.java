@@ -6,13 +6,9 @@ package br.com.storeweb.model;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import br.com.storeweb.dominio.DominioSituacao;
 
 /**
  * @author everson.lisboa.santos@gmail.com
@@ -29,9 +25,8 @@ public class EntityDefault {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dhAtualizacao;
 
-	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "id_sit")
-	private DominioSituacao idSit;
+	private String idSit;
 
 	public String getCdUsuarioAtulizador() {
 		return cdUsuarioAtulizador;
@@ -49,11 +44,11 @@ public class EntityDefault {
 		this.dhAtualizacao = dhAtualizacao;
 	}
 
-	public DominioSituacao getIdSit() {
+	public String getIdSit() {
 		return idSit;
 	}
 
-	public void setIdSit(DominioSituacao idSit) {
+	public void setIdSit(String idSit) {
 		this.idSit = idSit;
 	}
 
