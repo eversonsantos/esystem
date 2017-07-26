@@ -1,16 +1,20 @@
 package br.com.casadocodigo.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+@Controller
 public class HomeController {
 
 	
 	
-	@RequestMapping("/home")
-	public void index(){
-		System.out.println("Olá Spring");
+	@RequestMapping("/index")//(value = "/livro", produces = "application/json")
+//	@ResponseBody
+	public String index(){
+//		Livro l = new Livro(1L, "Spring");
+		return "home";
 	}
+	
+	
 }
