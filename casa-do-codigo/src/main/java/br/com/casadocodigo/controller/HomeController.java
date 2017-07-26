@@ -9,11 +9,11 @@ public class HomeController {
 
 	
 	
-	@RequestMapping("/index")//(value = "/livro", produces = "application/json")
+	@RequestMapping("/produto")//(value = "/livro", produces = "application/json")
 //	@ResponseBody
 	public String index(){
 //		Livro l = new Livro(1L, "Spring");
-		return "home";
+		return "products/form";
 	}
 	
 	
