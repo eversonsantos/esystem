@@ -17,9 +17,9 @@ public class UsuarioService{
 	
 	
 	public List<Usuario> listaUsuarios(){
-		logger.info("Vai buscar todos os usuários");
+		logger.info("Criando dez usuários");
 		createUsuarios();
-		logger.info("Ultimo sequence gerado "+ dao.getSequence());
+		logger.info("Vai buscar todos os usuários");
 		return dao.getListaUsuarios();
 	}
 	
@@ -43,12 +43,11 @@ public class UsuarioService{
 		
 		for (int i = 0; i < 10; i++) {
 			Usuario u = new Usuario();
-//			u.setCodigo(Long.parseLong(""+i));
 			u.setDtCadastro(new Date());
 			u.setDhAtualizacao(new Date());
 			u.setDsLogin("admin"+i);
 			u.setCdSenha("admin"+i);
-			u.setCdMatricula("USA-000"+i);
+			u.setCdMatricula(dao.geraMatriculaUsuario());
 			u.setIdSit(DominioSituacao.ATIVO.getValue());
 			u.setCdUsuarioAtulizador("admin"+i);
 			
