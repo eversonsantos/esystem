@@ -7,16 +7,22 @@
 <title>Cadastro de Produtos</title>
 </head>
 <body>
-	<form method="post" action="/casa-do-codigo/create">
+	<form method="post" action="/casa-do-codigo/livro" >
 		<div>
 			<label for="title">Titulo</label> <input class="form-control" type="text" name="title"	id="title" />
+		</div>
+		<div>
+			<label for="nome">Nome</label> <input class="form-control" type="text" name="name"	id="name" />
 		</div>
 		<div>
 			<label for="description">Descrição</label>
 			<textarea rows="10" cols="20" name="description" id="description"></textarea>
 		</div>
 		<div>
-			<label for="pages">Número de paginas</label> <input type="text"	name="pages" id="pages" />
+			<label for="pages">Número de paginas</label> <input type="text"	name="numberPages" id="numberPages" />
+		</div>
+		<div>
+			<label for="price">Preço R$</label> <input type="text"	name="price" id="price" />
 		</div>
 		<div>
 			<input type="submit" value="Enviar">

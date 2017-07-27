@@ -1,39 +1,30 @@
 package br.com.casadocodigo.model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@XmlRootElement
-public class Livro {
-
+@Entity(name ="product")
+public class Produto {
+	
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Column
 	private String name;
-
-	public Livro(Long id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-
-	public Livro() {
-
-	}
-
-	@XmlElement
+	
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	@XmlElement
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 }

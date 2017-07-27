@@ -10,7 +10,6 @@
 <script type="text/javascript" src="resources/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
-	<h1>Seja Bem Vindo ao Curso de Spring</h1>
-	<input class="form-control" size="10" type="password"/>
+	
 </body>
 </html>
