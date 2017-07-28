@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 @XmlRootElement
 @Entity(name ="book")
 public class Book {
@@ -27,6 +30,7 @@ public class Book {
 	@Column
 	private int numberPages;
 	@Column
+	@NumberFormat(style = Style.CURRENCY, pattern = "#,###.###")
 	private BigDecimal price;
 
 	
