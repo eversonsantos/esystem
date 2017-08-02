@@ -4,29 +4,48 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>Cadastro de Produtos</title>
 </head>
 <body>
-	<form method="post" action="/casa-do-codigo/livro" >
-		<div>
-			<label for="title">Titulo</label> <input class="form-control" type="text" name="title"	id="title" />
-		</div>
-		<div>
-			<label for="nome">Nome</label> <input class="form-control" type="text" name="name"	id="name" />
-		</div>
-		<div>
-			<label for="description">Descrição</label>
-			<textarea rows="10" cols="20" name="description" id="description"></textarea>
-		</div>
-		<div>
-			<label for="pages">Número de paginas</label> <input type="text"	name="numberPages" id="numberPages" />
-		</div>
-		<div>
-			<label for="price">Preço R$</label> <input type="text"	name="price" id="price" />
-		</div>
-		<div>
-			<input type="submit" value="Enviar">
-		</div>
-	</form>
+	<div style="margin-left: 25%; margin-right: 25%">
+			<form method="post" action="/casa-do-codigo/livro" >
+				<div>
+					<label for="title">Titulo</label> 
+				</div>
+				<div>
+					<input class="form-control" type="text" name="title"	id="title" style="width: 100%"/>
+				</div>
+				<div>
+					<label for="nome">Livro</label> 
+				</div>		
+				<div>
+					<input class="form-control" type="text" name="name"	id="name" style="width: 100%"/>
+				</div>
+				<div>
+					<label for="description">Descrição</label>
+				</div>
+				<div>
+					<textarea rows="10" cols="20" name="description" id="description" style="width: 100%"></textarea>
+				</div>
+				<div>
+					<label for="pages">Número de paginas</label> 
+				</div>
+				<div>
+					<input type="text"	name="numberPages" id="numberPages" style="width: 100%"/>
+				</div>
+				<div>
+					<label for="price">Preço R$</label> 
+				</div>
+				<div>
+					<input type="text"	name="price" id="price" style="width: 100%"/>
+				</div>
+				<div>
+					<button type="submit" style="width: 100%">
+						Cadastrar Produto
+					</button>
+				</div>
+			</form>
+	</div>
 </body>
 </html>
