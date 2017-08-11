@@ -41,6 +41,14 @@
 					<input type="text"	name="price" id="price" style="width: 100%"/>
 				</div>
 				<div>
+					<c:forEach varStatus="status" items="${types}" var = "typeBook">
+							<label for="price_${typeBook}">${typeBook.description}</label>
+							<input type="text"      name="prices[${status.index}].price"	id="price_${typeBook}"/>
+							<input type="hidden"	name="prices[${status.index}].typeBook"		value="${typeBook}"/>
+					</c:forEach>
+				</div>
+				<div>
+				
 					<button type="submit" style="width: 100%">
 						Cadastrar Produto
 					</button>

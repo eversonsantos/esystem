@@ -1,12 +1,16 @@
 package br.com.casadocodigo.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -14,7 +18,8 @@ import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
 @XmlRootElement
-@Entity(name ="book")
+@Entity
+@Table(name = "book")
 public class Book {
 
 	@Id
@@ -32,6 +37,8 @@ public class Book {
 	@NumberFormat(style = Style.CURRENCY, pattern = "#,###.###")
 	private BigDecimal price;
 
+	@ElementCollection
+	private List<Price> prices = new ArrayList<Price>();
 	
 
 	public Book(Long id, String name, String title, String description,
@@ -100,6 +107,15 @@ public class Book {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	@XmlElement
+	public List<Price> getPrices() {
+		return prices;
+	}
+
+	public void setPrices(List<Price> prices) {
+		this.prices = prices;
 	}
 	
 	

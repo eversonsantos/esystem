@@ -23,7 +23,7 @@ public class LivroDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<Book> getLista(){
-		Query q = manager.createQuery("select b from book b");
+		Query q = manager.createQuery("select distinct(b) from Book b join fetch b.prices");
 		return q.getResultList();
 	}
 	
