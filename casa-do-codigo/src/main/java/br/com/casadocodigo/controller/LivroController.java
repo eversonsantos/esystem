@@ -1,7 +1,5 @@
 package br.com.casadocodigo.controller;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.casadocodigo.daos.LivroDAO;
 import br.com.casadocodigo.model.Book;
@@ -19,6 +18,7 @@ import br.com.casadocodigo.type.TypeBook;
 
 @Controller
 @Transactional
+@RequestMapping("/livros")
 public class LivroController {
 
 	@Autowired
@@ -47,9 +47,10 @@ public class LivroController {
 		return livroDao.findBook(id);
 	}
 	
-	@RequestMapping(value = "/livro", method = RequestMethod.POST, produces = MediaType.APPLICATION_XML_VALUE)
-	public @ResponseBody Book createBook(Book book){
+	@RequestMapping(value = "/create", method = RequestMethod.POST, produces = MediaType.APPLICATION_XML_VALUE)
+	public String createBook(Book book, RedirectAttributes attributes){
+		attributes.addFlashAttribute("sucesso", "Livro incluído com sucesso");
 		livroDao.save(book);
-		return book;
+		return "redirect:lista";
 	}
 }

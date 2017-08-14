@@ -4,55 +4,47 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<style type="text/css">
+		body {
+			margin: 1%;
+		}
+	
+	</style>
 <title>Cadastro de Produtos</title>
 </head>
 <body>
 	<div style="margin-left: 25%; margin-right: 25%">
-			<form method="post" action="/casa-do-codigo/livro" >
-				<div>
+			<form method="post" action="/casa-do-codigo/livros/create" >
+				<div class="form-group">
 					<label for="title">Titulo</label> 
+					<input class="form-control" type="text" name="title"	id="title" />
 				</div>
-				<div>
-					<input class="form-control" type="text" name="title"	id="title" style="width: 100%"/>
-				</div>
-				<div>
+				<div class="form-group">
 					<label for="nome">Livro</label> 
-				</div>		
-				<div>
-					<input class="form-control" type="text" name="name"	id="name" style="width: 100%"/>
+					<input class="form-control" type="text" name="name"	id="name" />
 				</div>
-				<div>
+				<div class="form-group">
 					<label for="description">Descrição</label>
+					<textarea class ="form-control" rows="10" cols="20" name="description" id="description" ></textarea>
 				</div>
-				<div>
-					<textarea rows="10" cols="20" name="description" id="description" style="width: 100%"></textarea>
-				</div>
-				<div>
+				<div class="form-group">
 					<label for="pages">Número de paginas</label> 
+					<input class ="form-control" type="text"	name="numberPages" id="numberPages" />
 				</div>
-				<div>
-					<input type="text"	name="numberPages" id="numberPages" style="width: 100%"/>
-				</div>
-				<div>
-					<label for="price">Preço R$</label> 
-				</div>
-				<div>
-					<input type="text"	name="price" id="price" style="width: 100%"/>
-				</div>
-				<div>
 					<c:forEach varStatus="status" items="${types}" var = "typeBook">
+						<div class="form-group">
 							<label for="price_${typeBook}">${typeBook.description}</label>
-							<input type="text"      name="prices[${status.index}].price"	id="price_${typeBook}"/>
+							<input class ="form-control" type="text"      name="prices[${status.index}].price"	id="price_${typeBook}" />
 							<input type="hidden"	name="prices[${status.index}].typeBook"		value="${typeBook}"/>
+						</div>
 					</c:forEach>
-				</div>
-				<div>
-				
-					<button type="submit" style="width: 100%">
-						Cadastrar Produto
+					<button class =" btn btn-primary btn-block" type="submit">
+						Salvar Produto
 					</button>
-				</div>
 			</form>
 	</div>
 </body>
