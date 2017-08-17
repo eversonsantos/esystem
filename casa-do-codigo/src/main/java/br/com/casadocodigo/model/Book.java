@@ -42,13 +42,14 @@ public class Book {
 	
 
 	public Book(Long id, String name, String title, String description,
-			int numberPages, BigDecimal price) {
+			int numberPages, BigDecimal price, List<Price> prices) {
 		this.id = id;
 		this.name = name;
 		this.title = title;
 		this.description = description;
 		this.numberPages = numberPages;
-		this.price = price;
+//		this.price = price;
+		this.prices = prices;
 	}
 
 	public Book() {

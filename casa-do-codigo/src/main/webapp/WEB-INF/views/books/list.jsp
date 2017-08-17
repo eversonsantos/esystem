@@ -10,9 +10,7 @@
 <title>Lista de Produtos</title>
 <style type="text/css">
 	
-	table, th, td {
-		border: 1px solid black;
-	}
+	
 	table > thead > tr > td {
 		font-family: monospace;
 		font-weight: bold;
@@ -49,10 +47,10 @@
 		</div>
 		<div class="panel-body">
 				<div class="table-responsive">
-				<div class="alert alert-success">
-				  	${sucesso}
-				</div>
-					<table class = "table table-bordered">
+					<div class="alert alert-success">
+					  	${sucesso}
+					</div>
+					<table class = "table table-hover">
 						<thead>
 							<tr>
 								<td>Name</td>
