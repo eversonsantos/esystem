@@ -27,7 +27,7 @@ public class LivroController {
 	
 	@RequestMapping("/form")
 	public String goForm(){
-		return "form";
+		return "livro/form";
 	}
 	
 	@ResponseBody

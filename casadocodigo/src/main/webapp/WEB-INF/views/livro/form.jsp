@@ -12,24 +12,26 @@
 </head>
 <body>
 
-	<div class="container" style="width: 25%">
+	<div class="container" style="width: 25%; margin-top: 1%">
 	      <form>
-	       <h2 >Cadastro de Livro</h2>
-	       <div class="form-group">
-		        <label for="input-titulo" class="sr-only">Titúlo</label>
-		        <input type="text" id="input-titulo" class="form-control" placeholder="Titúlo do Livro" required autofocus>
-	       </div> 
-	       <div class="form-group">
-	       	 <label for="input-descricao" class="sr-only">Descrição</label>
-	        	<textarea rows="3" id="input-descricao" class="form-control" placeholder="Descrição do Livro" required autofocus></textarea>
-	        </div>
-	        <div class="form-group">
-		        <label for="input-paginas" class="sr-only">Número Páginas</label>
-		        <input type="text" id="input-paginas" class="form-control" placeholder="Número de Páginas" required autofocus>
-	       </div> 
-	        <button class="btn btn-lg btn-primary btn-block" type="submit">Salvar Livro</button>
-	      </form>
+	      		<div class = "alert alert-secondary" role="alert">
+	      			<h2 class="glyphicon glyphicon-log-in">Cadastro de Livro</h2>
+	      		</div>
+		       <div class="form-group">
+			        <label for="input-titulo" class="sr-only">Titúlo</label>
+			        <input type="text" id="input-titulo" class="form-control" placeholder="Titúlo do Livro" required autofocus>
+		       </div> 
+		       <div class="form-group">
+		       	 <label for="input-descricao" class="sr-only">Descrição</label>
+		        	<textarea rows="3" id="input-descricao" class="form-control" placeholder="Descrição do Livro" required autofocus></textarea>
+		        </div>
+		        <div class="form-group">
+			        <label for="input-paginas" class="sr-only">Número Páginas</label>
+			        <input type="text" id="input-paginas" class="form-control" placeholder="Número de Páginas" required autofocus>
+		       </div> 
+		        <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Salvar Livro</button>
+		   </form>
 	
-	  </div>
+	 </div>
 </body>
 </html>
