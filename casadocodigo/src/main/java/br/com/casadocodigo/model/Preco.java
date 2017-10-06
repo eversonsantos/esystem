@@ -2,12 +2,17 @@ package br.com.casadocodigo.model;
 
 import java.math.BigDecimal;
 
-import br.com.casadocodigo.dominio.LivroDominio;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
+import br.com.casadocodigo.dominio.DominioLivro;
+
+@Embeddable
 public class Preco {
 
+	@Column(scale = 2)
 	private BigDecimal preco;
-	private LivroDominio livroTipo;
+	private DominioLivro tipoLivro;
 	
 	public BigDecimal getPreco() {
 		return preco;
@@ -15,12 +20,13 @@ public class Preco {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
-	public LivroDominio getLivroTipo() {
-		return livroTipo;
+	public DominioLivro getTipoLivro() {
+		return tipoLivro;
 	}
-	public void setLivroTipo(LivroDominio livroTipo) {
-		this.livroTipo = livroTipo;
+	public void setTipoLivro(DominioLivro tipoLivro) {
+		this.tipoLivro = tipoLivro;
 	}
+	
 	
 	
 }

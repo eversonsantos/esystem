@@ -1,0 +1,26 @@
+package br.com.casadocodigo.validation;
+
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
+import br.com.casadocodigo.model.Livro;
+
+public class LivroValidator implements Validator {
+
+	@Override
+	public boolean supports(Class<?> clazz) {
+		return Livro.class.isAssignableFrom(clazz);
+	}
+
+	@Override
+	public void validate(Object target, Errors errors) {
+		ValidationUtils.rejectIfEmpty(errors, "titulo", "field.required");
+		ValidationUtils.rejectIfEmpty(errors, "descricao", "field.required");
+		
+		Livro livro = (Livro)target;
+		if(livro.getNumeroPaginas() == 0)
+			errors.rejectValue("numeroPaginas", "Número de paginas do Livro não pode ser zero");
+	}
+
+}

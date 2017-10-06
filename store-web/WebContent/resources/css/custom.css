@@ -1397,7 +1397,8 @@ deg
 .form-control {
 	border-radius: 0;
 	box-shadow: none;
-	border-color: #d2d6de
+	border-color: #d2d6de;
+	
 }
 
 .form-control:focus {
@@ -1484,6 +1485,7 @@ deg
 	.form-group-sm .form-control+.form-control-feedback.fa {
 	line-height: 30px
 }
+
 
 .progress, .progress>.progress-bar {
 	-webkit-box-shadow: none;

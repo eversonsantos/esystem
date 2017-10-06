@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,8 @@ public class Livro {
 	private String descricao;
 	@Column(name = "nr_pag")
 	private int numeroPaginas;
-	@Column(name = "cd_prc")
+	
+	@ElementCollection
 	private Collection<Preco> precos = new ArrayList<Preco>();
 	
 	
