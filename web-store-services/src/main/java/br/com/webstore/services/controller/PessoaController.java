@@ -26,7 +26,7 @@ public class PessoaController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Pessoa> findAll(){
-		return pRepository.findAll();
+		return pRepository.findAllOderByNome();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)

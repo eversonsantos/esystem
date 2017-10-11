@@ -10,7 +10,7 @@ import br.com.webstore.services.model.Pessoa;
 
 public interface PessoaRepository extends JpaRepository<Pessoa, Long>{
 
-	@Query("select p from Pessoa order by p.nmPes")
+	@Query("select p from Pessoa p order by p.nmPes")
 	public List<Pessoa> findAllOderByNome();
 }
 		

@@ -5,23 +5,28 @@ package br.com.webstore.services.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 /**
  * @author everson.lisboa.santos@gmail.com
  *
  *
  */
-//@MappedSuperclass
+@MappedSuperclass
 public class EntityDefault {
 
-//	@Column(name = "cd_usu_atu")
+	@Column(name = "cd_usu_atu")
 	private String cdUsuAtu;
 
-//	@Column(name = "dh_atu")
-//	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "dh_atu")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dhAtu;
 
 //	@Enumerated(EnumType.ORDINAL)
-//	@Column(name = "id_sit")
+	@Column(name = "id_sit")
 	private String idSit;
 
 	
