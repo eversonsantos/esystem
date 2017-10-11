@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app = "webStoreApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Import de JavaScript -->
+<title>Usuarios Cadastros</title>
+
+
+<link href="resources/css/checkbox.css" rel="stylesheet" type="text/css" />
+<link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet"	type="text/css" />
+<link href="resources/css/custom.css" rel="stylesheet" type="text/css" />
+
+<!-- <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+<!-- <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"> -->
+
+</head>
+	<body ng-controller="appController as ctrl">
+		<div class="container" style="margin: 1%;">
+			<div class="row">
+				<div class="col-sm-3">
+			      	<h4><a href="/" class="navbar-brand fa fa-shopping-cart"><b>Store</b>WEB</a></h4>
+			      	<ul>
+			      		<li><a href="/pessoas" >Pessoas</a></li>
+			      		<li><a href="/pessoa" >Pessoa</a></li>
+			      	</ul>
+				</div>
+				<div class="col-sm-9" ng-view>
+					Seja Bem vindo
+				</div>	
+			</div>
+		</div>
+	</body>
+	
+	<script type="text/javascript"	src="resources/bootstrap/js/bootstrap.js"></script>
+	
+	<script type="text/javascript" src="resources/lib/angular.js"></script>
+	<script type="text/javascript" src="resources/lib/angular-route.min.js"></script>
+	<script type="text/javascript" src="resources/lib/jQuery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+<!-- 	<script type="text/javascript" src="app/cadastro-detalhe.component.js"></script> -->
+	<script type="text/javascript" src="app/cadastro-detalhe-controller.js"></script>
+	
+</html>
