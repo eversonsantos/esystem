@@ -1,0 +1,56 @@
+<h3>Cadastro Membro</h3>
+
+<!-- PAGE CONTENT BEGINS -->
+
+<form class="form-cadastro"><!--form begin-->
+    <div class="row"><!-- /.row begin-->
+        <div class="col-md-2">
+            <!--<div class="form-group">-->
+            <label>CPF</label>
+            <input ngModel="pessoa.nome" class="form-control input-md input-cpf" type="text"/>
+            <!--</div>-->
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Nome</label>
+                <input class="form-control" type="text"/>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="control-group">
+                <label>Sexo</label>
+                <br/>
+                <label>
+                    <input type="radio" name="form-field-radio" class="ace">
+                    <span class="lbl">Masculino</span>
+                </label>
+                <label>
+                    <input type="radio" name="form-field-radio" class="ace">
+                    <span class="lbl">Feminino</span>
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <button class="btn btn-block btn-social btn-success">
+                <i class="fa fa-user-plus"></i> <b>Salvar</b>
+            </button>
+        </div>
+        <div class="col-md-3">
+            <a href="#!home" class="btn btn-block btn-social btn-info">
+                <i class="fa fa-rotate-left"></i> <b>Voltar</b>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-block btn-social btn-warning">
+                <i class="glyphicon glyphicon-ban-circle"></i> <b>Limpar Formulario</b>
+            </button>
+        </div>
+    </div><!-- /.row end-->
+
+</form><!--form end-->
+
+<!-- PAGE CONTENT ENDS -->
