@@ -4,21 +4,24 @@
 var app = angular.module('app', ['ngRoute']);
 
 app.config(function ($routeProvider, $locationProvider) {
-    // $locationProvider.html5Mode(true);
-    // $locationProvider.hashPrefix('!');
+   // $locationProvider.html5Mode(true);
+   //$locationProvider.hashPrefix('!');
     $routeProvider.when('/home', {
         templateUrl: 'home.html'
-    }).when('/membro', {
-        templateUrl: '/public/membro/form-detalhe.html'
+    }).when('/pessoas', {
+        templateUrl: '/public/views/pessoa/form-detalhe.html',
+        controller: 'pessoas-controller',
     }).when('/novo', {
-        templateUrl: '/public/membro/form-principal.html'
+        templateUrl: '/public/views/pessoa/form-principal.html',
+        controller: 'pessoa-controller'
     }).otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
     });
-})
+});
+
 
 app.controller('mainController', function ($scope) {
     $scope.sistema = 'Sweet Dreams';
-    $scope.tituloPagina = 'Titulo Pagina';
+    $scope.tituloPagina = 'Caminho de Rato';2
 });
 

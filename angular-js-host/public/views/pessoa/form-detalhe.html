@@ -1,0 +1,85 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Pessoa
+        <small>Lista de Pessoas</small>
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content container-fluid">
+
+    <!--------------------------
+      | Your Page Content Here |
+      -------------------------->
+
+    <div class="row" style="margin: 0% 10% 0% 10%">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#!novo" class="btn btn-block btn-social btn-dropbox">
+                                <i class="fa fa-2x fa-user-plus"></i> <b>Adicionar Novo</b>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            <input type="text" ng-model="searchText" class="form-control" placeholder="Digite para filtrar a lista"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="tr-titulo">
+                            <td class="td-titulo">#</td>
+                            <td>Pessoa</td>
+                            <td>CPF</td>
+                            <td>Desde</td>
+                            <td>Cidade</td>
+                            <td>Bairro</td>
+                            <td>Logradouro</td>
+                            <td class="td-titulo">Ações</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="pessoa in pessoas | filter : searchText" >
+                            <td width="3%" class="td-conteudo td-titulo">{{pessoa.id}}</td>
+                            <td width="20%" class="td-conteudo">{{pessoa.nome}}</td>
+                            <td width="10%" class="td-conteudo">{{pessoa.cic}}</td>
+                            <td width="10%" class="td-conteudo">{{pessoa.dhIncFormated}}</td>
+                            <td width="10%" class="td-conteudo">{{pessoa.endereco.cidade}}</td>
+                            <td width="10%" class="td-conteudo">{{pessoa.endereco.bairro}}</td>
+                            <td width="10%" class="td-conteudo">{{pessoa.endereco.logradouro}}</td>
+                            <td width="4%">
+                                <a href="#" class="btn btn-block btn-default">
+                                    <span><i class="fa fa-lg fa-edit"></i>  Editar</span>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-footer">
+                    <ul class="pagination pagination-md no-margin pull-right">
+                        <li><a href="#" title="Primeira Pagina"><<</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#" title="Ultima Pagina">>></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- /.content -->
+{{msg.mensagem}}
