@@ -1,4 +1,4 @@
-package br.com.webstore.services.model;
+package br.com.webstore.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

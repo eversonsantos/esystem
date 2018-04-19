@@ -1,11 +1,11 @@
-package br.com.webstore.services.repository;
+package br.com.webstore.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import br.com.webstore.services.model.Pessoa;
+import br.com.webstore.model.Pessoa;
 
 
 public interface PessoaRepository extends JpaRepository<Pessoa, Long>{

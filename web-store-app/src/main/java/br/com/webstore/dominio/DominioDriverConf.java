@@ -1,4 +1,4 @@
-package br.com.webstore.services.dominio;
+package br.com.webstore.dominio;
 
 public enum DominioDriverConf {
 	

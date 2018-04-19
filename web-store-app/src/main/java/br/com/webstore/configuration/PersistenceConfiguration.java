@@ -1,4 +1,4 @@
-package br.com.webstore.services.conf;
+package br.com.webstore.configuration;
 
 import java.util.Properties;
 
@@ -16,14 +16,14 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import br.com.webstore.services.dominio.DominioDialect;
-import br.com.webstore.services.dominio.DominioDriverConf;
-import br.com.webstore.services.dominio.DominioPackge;
-import br.com.webstore.services.repository.PessoaRepository;
+import br.com.webstore.dominio.DominioDialect;
+import br.com.webstore.dominio.DominioDriverConf;
+import br.com.webstore.dominio.DominioPackge;
+import br.com.webstore.repository.PessoaRepository;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses={PessoaRepository.class})
-public class JPAConfig {
+public class PersistenceConfiguration {
 	
 	@Bean(name = "entityManagerFactory")
 	public LocalContainerEntityManagerFactoryBean entityFactoryBean(){

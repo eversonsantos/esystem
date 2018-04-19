@@ -1,8 +1,8 @@
-package br.com.webstore.services.conf;
+package br.com.webstore.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class WebServlet extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class ServletConfiguration extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -11,7 +11,7 @@ public class WebServlet extends AbstractAnnotationConfigDispatcherServletInitial
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[]{WebConfig.class, JPAConfig.class};
+		return new Class[]{WebConfiguration.class, PersistenceConfiguration.class};
 	}
 
 	@Override

@@ -1,9 +1,9 @@
-package br.com.webstore.services.dominio;
+package br.com.webstore.dominio;
 
 public enum DominioPackge {
 	
-	MODEL("br.com.webstore.services.model"),
-	CONTROLLER("br.com.webstore.services.controller"),
+	MODEL("br.com.webstore.model"),
+	CONTROLLER("br.com.webstore.controller"),
 	CONF("");
 	
 	private String packge;

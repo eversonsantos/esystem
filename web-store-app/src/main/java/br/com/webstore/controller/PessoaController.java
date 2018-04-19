@@ -1,4 +1,4 @@
-package br.com.webstore.services.controller;
+package br.com.webstore.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.webstore.services.model.Pessoa;
-import br.com.webstore.services.repository.PessoaRepository;
+import br.com.webstore.model.Pessoa;
+import br.com.webstore.services.PessoaService;
 
 
 @RestController
@@ -21,19 +21,19 @@ public class PessoaController {
 
 	
 	@Autowired
-	private PessoaRepository pRepository;
+	private PessoaService pessoaService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Pessoa> findAll(){
-		return pRepository.findAllOderByNome();
+		return pessoaService.findAllOderByNome();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@ResponseBody
 	public Pessoa createPessoa(@RequestBody Pessoa pessoa){
-		pRepository.save(pessoa);
+		pessoaService.save(pessoa);
 		return pessoa;
 	}
 	

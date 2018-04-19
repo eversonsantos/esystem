@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.webstore.services.model;
+package br.com.webstore.model;
 
 import java.util.Date;
 
