@@ -92,23 +92,10 @@
 			<scope>runtime</scope>
 		</dependency>
 
-
-		<!-- <dependency> -->
-		<!-- <groupId>javax.validation</groupId> -->
-		<!-- <artifactId>validation-api</artifactId> -->
-		<!-- <version>1.0.0.GA</version> -->
-		<!-- </dependency> -->
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.hibernate</groupId> -->
-		<!-- <artifactId>hibernate-validator</artifactId> -->
-		<!-- <version>4.1.0.Final</version> -->
-		<!-- </dependency> -->
-
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.4-1200-jdbc41</version>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.15</version>
 		</dependency>
 
 		<dependency>
