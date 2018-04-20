@@ -1,21 +1,17 @@
 package br.com.webstore.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 
+import br.com.webstore.dominio.DominioCargo;
 import br.com.webstore.model.Pessoa;
 import br.com.webstore.services.PessoaService;
 
 
-@RestController
+@Controller
 @RequestMapping("/pessoa")
 public class PessoaController {
 
@@ -23,18 +19,24 @@ public class PessoaController {
 	@Autowired
 	private PessoaService pessoaService;
 	
-	@RequestMapping(method = RequestMethod.GET)
-	@ResponseBody
-	public List<Pessoa> findAll(){
-		return pessoaService.findAllOderByNome();
+		
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public String createPessoa(Pessoa pessoa){
+		pessoaService.save(pessoa);
+		return "redirect:/pessoa/cadastros";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
-	@ResponseStatus(code = HttpStatus.CREATED)
-	@ResponseBody
-	public Pessoa createPessoa(@RequestBody Pessoa pessoa){
-		pessoaService.save(pessoa);
-		return pessoa;
+	@RequestMapping("/cadastros")
+	public String cadastros(ModelMap model) {
+		model.addAttribute("cargos", DominioCargo.values());
+		model.addAttribute("pessoas", pessoaService.findAllOderByCodigo());
+		return "list";
+	}
+	
+	@RequestMapping("/cadastro")
+	public String cadastro(ModelMap model) {
+		model.addAttribute("cargos", DominioCargo.values());
+		return "form";
 	}
 	
 }

@@ -2,10 +2,14 @@ package br.com.webstore.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import br.com.webstore.dominio.DominioCargo;
 
 @Table(name = "tbl_pessoa")
 @Entity
@@ -18,13 +22,16 @@ public class Pessoa extends EntityDefault {
 
 	@Column(name = "nm_pes")
 	private String nmPes;
+	
+	@Column(name = "cd_crg")
+	@Enumerated(EnumType.ORDINAL)
+	private DominioCargo cargo;
 
-//	@OneToOne
-//	@JoinColumn(name = "cd_con")
-//	private Contato cdCon;
-
-	@Column(name = "nr_cic_pes")
-	private String nrCic;
+	@Column(name = "ds_crg")
+	private String dsEml;
+	
+	@Column(name = "ds_snh")
+	private String dsSnh;
 
 	public Long getCdPes() {
 		return cdPes;
@@ -42,12 +49,27 @@ public class Pessoa extends EntityDefault {
 		this.nmPes = nmPes;
 	}
 
-	public String getNrCic() {
-		return nrCic;
+	public DominioCargo getCargo() {
+		return cargo;
 	}
 
-	public void setNrCic(String nrCic) {
-		this.nrCic = nrCic;
+	public void setCargo(DominioCargo cargo) {
+		this.cargo = cargo;
 	}
 
+	public String getDsEml() {
+		return dsEml;
+	}
+
+	public void setDsEml(String dsEml) {
+		this.dsEml = dsEml;
+	}
+
+	public String getDsSnh() {
+		return dsSnh;
+	}
+
+	public void setDsSnh(String dsSnh) {
+		this.dsSnh = dsSnh;
+	}
 }

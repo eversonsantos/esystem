@@ -47,7 +47,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Home
+        Cadastro
       </h1>
     </section>
 
@@ -56,7 +56,49 @@
       <!-- Main row -->
       <div class="row">
       	<div class="col-md-12">	
-      		
+      		<div class="col-xs-6">
+				<div class="box box-primary">
+					<div class="box-header with-border">
+						<h3 class="box-title">Cadastro Rapido</h3>
+					</div>
+					<!-- /.box-header -->
+					<!-- form start -->
+					<form role="form" action="${path}/pessoa/create" method="post">
+						<div class="box-body">
+							<div class="form-group">
+								<label for="nmPes">Nome</label> <input type="text"
+									class="form-control input-sm" id="nmPes" name= "nmPes" placeholder="Digite seu nome">
+							</div>
+							<div class="form-group">
+								<label for="cargo">Cargo</label>
+								<select id="cargo" name="cargo" class="form-control input-sm">
+									<option value="">Selecione um cargo</option>
+									<c:forEach items="${cargos}" var="cargo">
+										<option value="${cargo}"><c:out value="${cargo.description}" /></option>
+				              		</c:forEach>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="dsEml">E-mail</label> <input type="text"
+									class="form-control input-sm" id="dsEml" name ="dsEml"
+									placeholder="Digite seu e-mail">
+							</div>
+							<div class="form-group">
+								<label for="dsSnh">Senha</label> <input
+									type="text" class="form-control input-sm" id="dsSnh" name = "dsSnh"
+									placeholder="Digite sua senha">
+							</div>
+						</div>
+						<!-- /.box-body -->
+				
+						<div class="box-footer">
+							<button type="submit" class="btn btn-block btn-social btn-twitter">
+							<i class="fa  fa-lg fa-user-plus"></i>
+							Salvar Cadastro</button>
+						</div>
+					</form>
+				</div>
+			</div>
       	</div>
       </div>
       <!-- /.row (main row) -->

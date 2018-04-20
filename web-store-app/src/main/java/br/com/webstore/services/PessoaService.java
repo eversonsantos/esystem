@@ -1,5 +1,6 @@
 package br.com.webstore.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class PessoaService {
 	private PessoaRepository pRepository;
 
 	public void save(Pessoa p){
+		p.setDhAtu(new Date());
 		pRepository.save(p);
 	}
 	
@@ -26,6 +28,10 @@ public class PessoaService {
 
 	public List<Pessoa> findAllOderByNome() {
 		return this.pRepository.findAllOderByNome();
+	}
+	
+	public List<Pessoa> findAllOderByCodigo() {
+		return this.pRepository.findAllOderByCodigo();
 	}
 	
 }

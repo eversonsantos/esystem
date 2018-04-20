@@ -12,5 +12,8 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long>{
 
 	@Query("select p from Pessoa p order by p.nmPes")
 	public List<Pessoa> findAllOderByNome();
+	
+	@Query("select p from Pessoa p order by p.cdPes")
+	public List<Pessoa> findAllOderByCodigo();
 }
 		
