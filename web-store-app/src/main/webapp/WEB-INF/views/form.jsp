@@ -50,8 +50,7 @@
 	      <h1>
 			<label for="idTipoPessoa" style="margin-bottom: 0px;">Cadastro de Pessoa</label><br/>
 	      </h1>
-		    <div class="form-group">
-	               
+		    <div class="form-group" >
 	               <c:forEach items="${tiposPessoa}" var="tipo">
 	                <label class="radio inline" style="font-weight: normal;">
 					      <input type="radio" name="idTipoPessoa" value="${tipo.sigla}">
@@ -71,7 +70,7 @@
 						<div class="box-body">
 							<div class="row">
 								<div id="div-pessoa-fisica" class="col-md-9 col-xs-9">
-										<%@ include file="/WEB-INF/views/pessoa/fisica/form.jsp"%>
+									<%@ include file="/WEB-INF/views/pessoa/fisica/form.jsp"%>
 								</div>
 								<div id="div-pessoa-juridica">
 									<h2>Em construção</h2>
@@ -79,8 +78,8 @@
 								<div class="col-md-3 col-xs-3">
 									  <div class="box">
 									     	<div class="box-header" align="center">
-								                  <h5 id="nm-pes">Alexander Pierce - Web Developer</h5>
-								                  <small>everson.lisboa.santos@gmail.com</small>
+								                  <h5 id="nm-pes"></h5>
+								                  <small id="ds-email"></small>
 									     	</div>
 										   <div class="box-body" align="center">
 											     <img src="${path}/assets/adminlte/img/user-default.png" class="img-circle" alt="User Image" style="height: 125px;">
@@ -163,6 +162,11 @@ $(function(){
 			e.preventDefault();
 			$('#nm-pes').text($(this).val());
 		});
+		$('input[name=dsEml]').bind("keyup blur focus", function(e) {
+			e.preventDefault();
+			$('#ds-email').text($(this).val());
+		});
+		
 		$('.cic').inputmask('999.999.999-99');
 		$("input[name='cdPfis.dtNasc']").inputmask('99/99/9999');
 });		

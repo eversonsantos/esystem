@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<div>
 	<div class="row">
 		<div class="col-md-3 col-xs-6">
 			<div class="form-group">
@@ -49,7 +50,7 @@
 			  </select>
 			</div>
 		</div>
-		<div class="col-md-3 col-xs-6">
+		<div class="col-md-4 col-xs-6">
 			<div class="form-group">
 			  <label>Escolaridade</label>
 			  <select class="form-control select2" style="width: 100%;" name="cdPfis.dsEsc">
@@ -80,25 +81,24 @@
 		<div class="col-md-6 col-xs-6">
 			<div class="form-group">
 				<label for="nmPai">E-mail</label><br/>
-				<input class="form-control input-sm" name="cdPfis.nmPai"/>
+				<input class="form-control input-sm" name="dsEml"/>
 			</div>	
 		</div>
 	</div>
+	<hr/>
 	<div class="row">
 		<div class="col-md-4 col-md-6">
-			<button type="submit" class="btn btn-block btn-social btn-default btn-sm">
-			<i class="fa  fa-lg fa-user-plus"></i>
-			Salvar Cadastro</button>
+			<button type="button" class="btn btn-block btn-social btn-default btn-sm" data-toggle="modal" data-target="#modal-endereco" data-backdrop="static" data-keyboard="false">
+			<i class="fa  fa-lg fa-map-signs"></i>
+			Adicionar Endereço</button>
 		</div>
 		<div class="col-md-4 col-md-6">
-			<button type="submit" class="btn btn-block btn-social btn-default btn-sm">
-			<i class="fa  fa-lg fa-times"></i>
-			Cancelar Cadastro</button>
+			<button type="submit" class="btn btn-block btn-social btn-default btn-sm" data-toggle="modal" data-target="#modal-telefone" data-backdrop="static" data-keyboard="false">
+			<i class="fa  fa-lg  fa-phone"></i>
+			Adicionar Contatos</button>
 		</div>
-		
-		<div class="col-md-4 col-md-6">
-			<a href="${path}/pessoa/cadastros" class="btn btn-block btn-social btn-default btn-sm">
-			<i class="fa  fa-lg fa-sign-out"></i>
-			Voltar</a>
-		</div>
-	</div>									
+	</div>	
+</div>
+	<div id="modal-endereco" class="modal fade" >
+		<%@ include file="/WEB-INF/views/pessoa/endereco/form.jsp"%>
+	</div>								
