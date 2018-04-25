@@ -10,7 +10,7 @@
 	<c:set var="path" value="${pageContext.request.contextPath}"/>
 	<%@ include file="/WEB-INF/views/tags/importscss.jsp"%>
 </head>
-<body class="hold-transition skin-blue sidebar-mini layout-boxed">
+<body class="hold-transition skin-blue sidebar-mini">
 
 	<div class="wrapper">
 

@@ -10,7 +10,7 @@
 	<c:set var="path" value="${pageContext.request.contextPath}"/>
 	<%@ include file="/WEB-INF/views/tags/importscss.jsp"%>
 </head>
-<body class="hold-transition skin-blue sidebar-mini layout-boxed">
+<body class="hold-transition skin-blue sidebar-mini">
 
 	<div class="wrapper">
 
@@ -56,7 +56,7 @@
       <!-- Main row -->
       <div class="row">
       	<div class="col-md-12">	
-	      	<div class="col-xs-4">
+	      	<div class="col-xs-3">
 				<div class="box">
 		           <div class="box-header">
 		             <h3 class="box-title">Filtros para pesquisa</h3>
@@ -65,15 +65,6 @@
 								<div class="form-group">
 									<label for="nome">Nome</label> <input type="text"
 										class="form-control input-sm" id="nome" placeholder="Digite seu nome">
-								</div>
-								<div class="form-group">
-									<label for="cargo">Cargo</label>
-									<select id="cargo" name="cargo" class="form-control input-sm">
-										<option value="">Selecione um cargo</option>
-										<c:forEach items="${cargos}" var="cargo">
-											<option value="${cargo}"><c:out value="${cargo.description}" /></option>
-					              		</c:forEach>
-									</select>
 								</div>
 								<div class="box-footer">
 									<a href="#" class="btn btn-block btn-social btn-default">
@@ -86,7 +77,7 @@
 					</div>
 				</div>	
 			</div>
-	       <div class="col-xs-8">
+	       <div class="col-xs-9">
 	         <div class="box">
 	           <div class="box-header">
 	             <h3 class="box-title">Lista Cadastros</h3>
@@ -101,22 +92,26 @@
 	          </div>
 	          <!-- /.box-header -->
 	          <div class="box-body">
-	              <table class="table table-bordered">
+	              <table class="table table-bordered table-striped">
 	                <tr>
 	                  <th style="width: 10px">#</th>
+					  <th>CPF/CNPJ</th>
 	                  <th>Pessoa</th>
-	                  <th>Cargo</th>
+	                  <th>Nº RG</th>
+	                  <th>Tipo Pessoa</th>
 	                  <th style="width: 40px">Opções</th>
 	                </tr>
-	               	<c:forEach items = "${pessoas}" var = "pessoa">
+	               	<c:forEach items="${pessoas}" var="pessoa">
 		                <tr>
 	                 		<td>
 	                 			<a href="#">
 									<i class="fa fa-search-plus"></i>
 								</a>
 	                 		</td>
+	                 		<td id="td-nrcic">${pessoa.nrCicFormatted}</td>
 	                 		<td>${pessoa.nmPes}</td>
-	                 		<td>${pessoa.cargo.description}</td>
+	                 		<td>${pessoa.cdPfis.nrRg}</td>
+	                 		<td>${pessoa.idTipoPessoa.description}</td>
 	                 		<td>
 	                 			<a href="#">
 									<i class="fa fa-lg fa-pencil-square-o"></i>

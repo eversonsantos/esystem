@@ -6,11 +6,11 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Sweet Dreams - Home</title>
+	<title>Web Store</title>
 	<c:set var="path" value="${pageContext.request.contextPath}"/>
 	<%@ include file="/WEB-INF/views/tags/importscss.jsp"%>
 </head>
-<body class="hold-transition skin-blue sidebar-mini layout-boxed">
+<body class="hold-transition skin-blue sidebar-mini">
 
 	<div class="wrapper">
 
@@ -45,71 +45,127 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Cadastro
-      </h1>
-    </section>
+    <form role="form" action="${path}/pessoa/create" method="post" id="formPessoa">
+	    <section class="content-header">
+	      <h1>
+			<label for="idTipoPessoa" style="margin-bottom: 0px;">Cadastro de Pessoa</label><br/>
+	      </h1>
+		    <div class="form-group">
+	               
+	               <c:forEach items="${tiposPessoa}" var="tipo">
+	                <label class="radio inline" style="font-weight: normal;">
+					      <input type="radio" name="idTipoPessoa" value="${tipo.sigla}">
+					      <span> ${tipo.description} </span> 
+	                </label>
+	               </c:forEach>
+			</div>
+	    </section>
 
     <!-- Main content -->
-    <section class="content">
-      <!-- Main row -->
-      <div class="row">
-      	<div class="col-md-12">	
-      		<div class="col-xs-6">
-				<div class="box box-primary">
-					<div class="box-header with-border">
-						<h3 class="box-title">Cadastro Rapido</h3>
-					</div>
-					<!-- /.box-header -->
-					<!-- form start -->
-					<form role="form" action="${path}/pessoa/create" method="post">
+	    <section class="content">
+	      <!-- Main row -->
+	      <div class="row">
+	      	<div class="col-md-12 col-xs-12">	
+					<div class="box box-primary" id="content">
+						<!-- form start -->
 						<div class="box-body">
-							<div class="form-group">
-								<label for="nmPes">Nome</label> <input type="text"
-									class="form-control input-sm" id="nmPes" name= "nmPes" placeholder="Digite seu nome">
+							<div class="row">
+								<div id="div-pessoa-fisica" class="col-md-9 col-xs-9">
+										<%@ include file="/WEB-INF/views/pessoa/fisica/form.jsp"%>
+								</div>
+								<div id="div-pessoa-juridica">
+									<h2>Em construção</h2>
+								</div>
+								<div class="col-md-3 col-xs-3">
+									  <div class="box">
+									     	<div class="box-header" align="center">
+								                  <h5 id="nm-pes">Alexander Pierce - Web Developer</h5>
+								                  <small>everson.lisboa.santos@gmail.com</small>
+									     	</div>
+										   <div class="box-body" align="center">
+											     <img src="${path}/assets/adminlte/img/user-default.png" class="img-circle" alt="User Image" style="height: 125px;">
+									       </div>
+									       <div class="box-footer" align="center">
+									       		<input type="file" class="form-control input-sm"/>
+									       		<div class="row">
+									       			<div class="col-md-6 col-md-6">
+										       			<button type="button" class="btn btn-block btn-default btn-sm">Carregar</button>
+									       			</div>
+									       			<div class="col-md-6 col-md-6">
+										       			<button type="button" class="btn btn-block btn-default btn-sm">remover</button>
+									       			</div>
+									       		</div>	
+									       </div>
+									  </div>
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="cargo">Cargo</label>
-								<select id="cargo" name="cargo" class="form-control input-sm">
-									<option value="">Selecione um cargo</option>
-									<c:forEach items="${cargos}" var="cargo">
-										<option value="${cargo}"><c:out value="${cargo.description}" /></option>
-				              		</c:forEach>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="dsEml">E-mail</label> <input type="text"
-									class="form-control input-sm" id="dsEml" name ="dsEml"
-									placeholder="Digite seu e-mail">
-							</div>
-							<div class="form-group">
-								<label for="dsSnh">Senha</label> <input
-									type="text" class="form-control input-sm" id="dsSnh" name = "dsSnh"
-									placeholder="Digite sua senha">
-							</div>
-						</div>
+						</div>	
 						<!-- /.box-body -->
 				
 						<div class="box-footer">
-							<button type="submit" class="btn btn-block btn-social btn-twitter">
-							<i class="fa  fa-lg fa-user-plus"></i>
-							Salvar Cadastro</button>
+							<div class="row">
+								<div class="col-md-4 col-md-6">
+									<button type="submit" class="btn btn-block btn-social btn-default btn-sm">
+									<i class="fa  fa-lg fa-user-plus"></i>
+									Salvar Cadastro</button>
+								</div>
+								<div class="col-md-4 col-md-6">
+									<button type="submit" class="btn btn-block btn-social btn-default btn-sm">
+									<i class="fa  fa-lg fa-times"></i>
+									Cancelar Cadastro</button>
+								</div>
+								
+								<div class="col-md-4 col-md-6">
+									<a href="${path}/pessoa/cadastros" class="btn btn-block btn-social btn-default btn-sm">
+									<i class="fa  fa-lg fa-sign-out"></i>
+									Voltar</a>
+								</div>
+							</div>
 						</div>
-					</form>
 				</div>
-			</div>
-      	</div>
-      </div>
-      <!-- /.row (main row) -->
-
-    </section>
+	      	</div>
+	      </div>
+	      <!-- /.row (main row) -->
+	    </section>
     <!-- /.content -->
+	</form>
   </div>
   <!-- /.content-wrapper -->
   <%@ include file="/WEB-INF/views/tags/footer.jsp"%>
   <div class="control-sidebar-bg"></div>
 </div>
-	<%@ include file="/WEB-INF/views/tags/importsscripts.jsp"%>
+<%@ include file="/WEB-INF/views/tags/importsscripts.jsp"%>
+
+<script>
+$(function(){
+		$('#div-pessoa-fisica').hide();
+		$('#div-pessoa-juridica').hide();
+		$('#content').hide();
+		$('input[type=radio][name=idTipoPessoa]').on('change', function() {
+		     if($(this).val() == 'F'){
+		    	 $('#div-pessoa-fisica').show();
+		    	 $('#div-pessoa-juridica').hide();
+		     }
+		     if($(this).val() == 'J'){
+		    	 $('#div-pessoa-fisica').hide();
+		    	 $('#div-pessoa-juridica').show();
+		     }
+		     $('#content').show();
+	     });
+		
+		$('.cic').bind("keyup blur focus", function(e) {
+			e.preventDefault();
+			var expre = /[^\d]/g;
+			$('#nrCic').val($(this).val().replace(expre, ''));
+		});
+		
+		$('input[name=nmPes]').bind("keyup blur focus", function(e) {
+			e.preventDefault();
+			$('#nm-pes').text($(this).val());
+		});
+		$('.cic').inputmask('999.999.999-99');
+		$("input[name='cdPfis.dtNasc']").inputmask('99/99/9999');
+});		
+</script>
 </body>
 </html>

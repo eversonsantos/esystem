@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.webstore.dominio.DominioCargo;
 import br.com.webstore.services.PessoaService;
 
 @Controller

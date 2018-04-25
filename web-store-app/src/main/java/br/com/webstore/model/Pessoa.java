@@ -1,5 +1,6 @@
 package br.com.webstore.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,9 +8,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import br.com.webstore.dominio.DominioCargo;
+import br.com.webstore.dominio.DominioTipoPessoa;
+import br.com.webstore.utils.FormatUtils;
 
 @Table(name = "tbl_pessoa")
 @Entity
@@ -17,22 +21,23 @@ public class Pessoa extends EntityDefault {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cd_pes")
+	@Column(name="cd_pes")
 	private Long cdPes;
 
-	@Column(name = "nm_pes")
+	@Column(name="nm_pes")
 	private String nmPes;
 	
-	@Column(name = "cd_crg")
-	@Enumerated(EnumType.ORDINAL)
-	private DominioCargo cargo;
-
-	@Column(name = "ds_crg")
-	private String dsEml;
+	@Column(name="nr_cic")
+	private String nrCic;
 	
-	@Column(name = "ds_snh")
-	private String dsSnh;
-
+	@Column(name="id_tp_pes")
+	@Enumerated(EnumType.STRING)
+	private DominioTipoPessoa idTipoPessoa;
+	
+	@JoinColumn(name="cd_pfis")
+	@OneToOne(cascade = CascadeType.ALL)
+	private IPFisica cdPfis;
+	
 	public Long getCdPes() {
 		return cdPes;
 	}
@@ -49,27 +54,36 @@ public class Pessoa extends EntityDefault {
 		this.nmPes = nmPes;
 	}
 
-	public DominioCargo getCargo() {
-		return cargo;
+	public String getNrCic() {
+		return nrCic;
 	}
 
-	public void setCargo(DominioCargo cargo) {
-		this.cargo = cargo;
+	public void setNrCic(String nrCic) {
+		this.nrCic = nrCic;
 	}
 
-	public String getDsEml() {
-		return dsEml;
+	public DominioTipoPessoa getIdTipoPessoa() {
+		return idTipoPessoa;
 	}
 
-	public void setDsEml(String dsEml) {
-		this.dsEml = dsEml;
+	public void setIdTipoPessoa(String idTipoPessoa) {
+		this.idTipoPessoa = DominioTipoPessoa.parser(idTipoPessoa);
+	}
+	
+	public IPFisica getCdPfis() {
+		return cdPfis;
 	}
 
-	public String getDsSnh() {
-		return dsSnh;
+	public void setCdPfis(IPFisica cdPfis) {
+		this.cdPfis = cdPfis;
 	}
 
-	public void setDsSnh(String dsSnh) {
-		this.dsSnh = dsSnh;
+	public String getNrCicFormatted() {
+		if(this.idTipoPessoa != null) {
+			if(this.idTipoPessoa.compareTo(DominioTipoPessoa.FISICA) == 0)
+				return FormatUtils.formartString(getNrCic(), "###.###.###-##");
+			return FormatUtils.formartString(getNrCic(), "##.###.###/####-##");
+		}
+		return "";
 	}
 }

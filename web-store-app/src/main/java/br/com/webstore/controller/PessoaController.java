@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.webstore.dominio.DominioCargo;
+import br.com.webstore.dominio.DominioEscolaridade;
+import br.com.webstore.dominio.DominioEstCivil;
+import br.com.webstore.dominio.DominioGenero;
+import br.com.webstore.dominio.DominioTipoPessoa;
 import br.com.webstore.model.Pessoa;
 import br.com.webstore.services.PessoaService;
 
@@ -30,12 +34,15 @@ public class PessoaController {
 	public String cadastros(ModelMap model) {
 		model.addAttribute("cargos", DominioCargo.values());
 		model.addAttribute("pessoas", pessoaService.findAllOderByCodigo());
-		return "list";
+		return "/pessoa/list";
 	}
 	
 	@RequestMapping("/cadastro")
 	public String cadastro(ModelMap model) {
-		model.addAttribute("cargos", DominioCargo.values());
+		model.addAttribute("tiposPessoa", DominioTipoPessoa.values());
+		model.addAttribute("generos", DominioGenero.values());
+		model.addAttribute("estCivis", DominioEstCivil.values());
+		model.addAttribute("escolaridades", DominioEscolaridade.values());
 		return "form";
 	}
 	
