@@ -1,7 +1,7 @@
 <%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,10 +52,10 @@
 	      </h1>
 		    <div class="form-group" >
 	               <c:forEach items="${tiposPessoa}" var="tipo">
-	                <label class="radio inline" style="font-weight: normal;">
-					      <input type="radio" name="idTipoPessoa" value="${tipo.sigla}">
-					      <span> ${tipo.description} </span> 
-	                </label>
+		                <label class="radio inline" style="font-weight: normal;">
+						      <input type="radio" name="idTipoPessoa" value="${tipo.sigla}">
+						      <span> ${tipo.description} </span> 
+		                </label>
 	               </c:forEach>
 			</div>
 	    </section>
@@ -63,8 +63,8 @@
     <!-- Main content -->
 	    <section class="content">
 	      <!-- Main row -->
-	      <div class="row">
-	      	<div class="col-md-12 col-xs-12">	
+<!-- 	      <div class="row"> -->
+<!-- 	      	<div class="col-md-12 col-xs-12">	 -->
 					<div class="box box-primary" id="content">
 						<!-- form start -->
 						<div class="box-body">
@@ -91,13 +91,22 @@
 										       			<button type="button" class="btn btn-block btn-default btn-sm">Carregar</button>
 									       			</div>
 									       			<div class="col-md-6 col-md-6">
-										       			<button type="button" class="btn btn-block btn-default btn-sm">remover</button>
+										       			<button type="button" class="btn btn-block btn-default btn-sm">Remover</button>
 									       			</div>
 									       		</div>	
 									       </div>
 									  </div>
 								</div>
 							</div>
+							<hr/>
+							<div class="row">
+								<div class="col-md-6 col-xs-6">
+									<%@ include file="/WEB-INF/views/pessoa/endereco/form.jsp"%>
+								</div>
+								<div class="col-md-6 col-xs-6">
+									<%@ include file="/WEB-INF/views/pessoa/contato/form.jsp"%>
+								</div>
+							</div>	
 						</div>	
 						<!-- /.box-body -->
 				
@@ -122,8 +131,8 @@
 							</div>
 						</div>
 				</div>
-	      	</div>
-	      </div>
+<!-- 	      	</div> -->
+<!-- 	      </div> -->
 	      <!-- /.row (main row) -->
 	    </section>
     <!-- /.content -->
@@ -140,6 +149,9 @@ $(function(){
 		$('#div-pessoa-fisica').hide();
 		$('#div-pessoa-juridica').hide();
 		$('#content').hide();
+		
+		var expre = /[^\d]/g;
+		
 		$('input[type=radio][name=idTipoPessoa]').on('change', function() {
 		     if($(this).val() == 'F'){
 		    	 $('#div-pessoa-fisica').show();
@@ -154,7 +166,6 @@ $(function(){
 		
 		$('.cic').bind("keyup blur focus", function(e) {
 			e.preventDefault();
-			var expre = /[^\d]/g;
 			$('#nrCic').val($(this).val().replace(expre, ''));
 		});
 		
@@ -168,7 +179,16 @@ $(function(){
 		});
 		
 		$('.cic').inputmask('999.999.999-99');
-		$("input[name='cdPfis.dtNasc']").inputmask('99/99/9999');
+		$(".nasc").inputmask('99/99/9999');
+		$('.cep').inputmask('99999-999');
+		$('.tel').inputmask('(99)99999-9999');
+		
+		
+		$('.cep').bind("keyup blur focus", function(e) {
+			e.preventDefault();
+			$('#cd-cep').val($(this).val().replace(expre, ''));
+		});
+		
 });		
 </script>
 </body>

@@ -19,6 +19,11 @@ import br.com.webstore.utils.FormatUtils;
 @Entity
 public class Pessoa extends EntityDefault {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="cd_pes")
@@ -36,7 +41,11 @@ public class Pessoa extends EntityDefault {
 	
 	@JoinColumn(name="cd_pfis")
 	@OneToOne(cascade = CascadeType.ALL)
-	private IPFisica cdPfis;
+	private IPFisica pessoaFisica;
+	
+	@JoinColumn(name="cd_end")
+	@OneToOne(cascade = CascadeType.ALL)
+	private Endereco endereco;
 	
 	public Long getCdPes() {
 		return cdPes;
@@ -70,12 +79,21 @@ public class Pessoa extends EntityDefault {
 		this.idTipoPessoa = DominioTipoPessoa.parser(idTipoPessoa);
 	}
 	
-	public IPFisica getCdPfis() {
-		return cdPfis;
+
+	public IPFisica getPessoaFisica() {
+		return pessoaFisica;
 	}
 
-	public void setCdPfis(IPFisica cdPfis) {
-		this.cdPfis = cdPfis;
+	public void setPessoaFisica(IPFisica pessoaFisica) {
+		this.pessoaFisica = pessoaFisica;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	public String getNrCicFormatted() {

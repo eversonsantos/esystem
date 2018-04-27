@@ -3,6 +3,7 @@
  */
 package br.com.webstore.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,7 +17,12 @@ import javax.persistence.TemporalType;
  *
  */
 @MappedSuperclass
-public class EntityDefault {
+public class EntityDefault implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "cd_usu_atu")
 	private String cdUsuAtu;

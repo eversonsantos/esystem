@@ -2,6 +2,8 @@ package br.com.webstore.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import br.com.webstore.validator.EnderecoValidator;
+
 public class ServletConfiguration extends AbstractAnnotationConfigDispatcherServletInitializer{
 
 	@Override
@@ -11,7 +13,7 @@ public class ServletConfiguration extends AbstractAnnotationConfigDispatcherServ
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class[]{WebConfiguration.class, PersistenceConfiguration.class};
+		return new Class[]{WebConfiguration.class, PersistenceConfiguration.class, EnderecoValidator.class};
 	}
 
 	@Override

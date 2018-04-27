@@ -99,6 +99,7 @@
 	                  <th>Pessoa</th>
 	                  <th>Nº RG</th>
 	                  <th>Tipo Pessoa</th>
+	                  <th>CEP</th>
 	                  <th style="width: 40px">Opções</th>
 	                </tr>
 	               	<c:forEach items="${pessoas}" var="pessoa">
