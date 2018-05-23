@@ -2,11 +2,14 @@ package br.com.webstore.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.webstore.dominio.DominioTipoTelefone;
 import br.com.webstore.utils.FormatUtils;
 
 @Entity
@@ -19,7 +22,7 @@ public class Endereco {
 	private Long cdEnd;
 	
 	@Column(name="cd_cep")
-	private long cdCep;
+	private String cdCep;
 	
 	@Column(name="nm_log")
 	private String nmLog;
@@ -38,6 +41,13 @@ public class Endereco {
 	
 	@Column(name="ds_cpl")
 	private String dsCpl;
+	
+	@Column(name="nr_tel")
+	private String nrTel;
+	
+	@Column(name="ds_tp_tel")
+	@Enumerated(EnumType.STRING)
+	private DominioTipoTelefone dsTipoTel;
 
 	public Long getCdEnd() {
 		return cdEnd;
@@ -47,11 +57,11 @@ public class Endereco {
 		this.cdEnd = cdEnd;
 	}
 
-	public long getCdCep() {
+	public String getCdCep() {
 		return cdCep;
 	}
 
-	public void setCdCep(long cdCep) {
+	public void setCdCep(String cdCep) {
 		this.cdCep = cdCep;
 	}
 
@@ -103,6 +113,23 @@ public class Endereco {
 		this.dsCpl = dsCpl;
 	}
 	
+	
+	public String getNrTel() {
+		return nrTel;
+	}
+
+	public void setNrTel(String nrTel) {
+		this.nrTel = nrTel;
+	}
+
+	public DominioTipoTelefone getDsTipoTel() {
+		return dsTipoTel;
+	}
+
+	public void setDsTipoTel(String dsTipoTel) {
+		this.dsTipoTel = DominioTipoTelefone.parser(dsTipoTel);
+	}
+
 	public String getCepFormatted() {
 		String cep = String.valueOf(this.cdCep);
 		if(cep != null || !"".equals(cep))

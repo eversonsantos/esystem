@@ -15,19 +15,19 @@ public enum DominioEscolaridade {
 		this.description = description;
 	}
 	
-	public static DominioEscolaridade parser (String description) {
-		for (DominioEscolaridade tipo : DominioEscolaridade.values()) {
-			if(description.equalsIgnoreCase(tipo.getDescription()))
-				return tipo;
-		}
-		return null;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public static DominioEscolaridade parser (String description) {
+		for (DominioEscolaridade tipo : DominioEscolaridade.values()) {
+			if(description.equalsIgnoreCase(tipo.getDescription()))
+				return tipo;
+		}
+		return null;
 	}
 }

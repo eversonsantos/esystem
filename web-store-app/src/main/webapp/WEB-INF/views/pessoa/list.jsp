@@ -111,7 +111,7 @@
 	                 		</td>
 	                 		<td id="td-nrcic">${pessoa.nrCicFormatted}</td>
 	                 		<td>${pessoa.nmPes}</td>
-	                 		<td>${pessoa.cdPfis.nrRg}</td>
+	                 		<td>${pessoa.pessoaFisica.nrRg}</td>
 	                 		<td>${pessoa.idTipoPessoa.description}</td>
 	                 		<td>
 	                 			<a href="#">

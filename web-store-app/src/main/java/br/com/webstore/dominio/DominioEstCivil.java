@@ -16,14 +16,6 @@ public enum DominioEstCivil {
 		this.description = description;
 	}
 	
-	public static DominioEstCivil parser (String sigla) {
-		for (DominioEstCivil tipo : DominioEstCivil.values()) {
-			if(sigla.equalsIgnoreCase(tipo.getSigla()))
-				return tipo;
-		}
-		return null;
-	}
-
 	public String getSigla() {
 		return sigla;
 	}
@@ -38,5 +30,13 @@ public enum DominioEstCivil {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public static DominioEstCivil parser (String sigla) {
+		for (DominioEstCivil tipo : DominioEstCivil.values()) {
+			if(sigla.equalsIgnoreCase(tipo.getSigla()))
+				return tipo;
+		}
+		return null;
 	}
 }

@@ -13,14 +13,6 @@ public enum DominioTipoPessoa {
 		this.description = description;
 	}
 	
-	public static DominioTipoPessoa parser (String sigla) {
-		for (DominioTipoPessoa tipo : DominioTipoPessoa.values()) {
-			if(sigla.equalsIgnoreCase(tipo.getSigla()))
-				return tipo;
-		}
-		return null;
-	}
-
 	public String getSigla() {
 		return sigla;
 	}
@@ -35,5 +27,13 @@ public enum DominioTipoPessoa {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public static DominioTipoPessoa parser (String sigla) {
+		for (DominioTipoPessoa tipo : DominioTipoPessoa.values()) {
+			if(sigla.equalsIgnoreCase(tipo.getSigla()))
+				return tipo;
+		}
+		return null;
 	}
 }
