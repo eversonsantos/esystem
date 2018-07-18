@@ -1,8 +1,10 @@
 package br.com.sw.resources;
 
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sw.exception.ResourceNotFoundException;
 import br.com.sw.model.Membro;
 import br.com.sw.repository.MembroRepository;
 
@@ -31,7 +34,10 @@ public class MembroResources {
 	
 	@GetMapping(path = "{id}")
 	public ResponseEntity<?> find(@PathVariable("id") Long id){
-		return new ResponseEntity<>(pessoaRepository.findById(id), HttpStatus.OK);
+		Optional<Membro> optional = pessoaRepository.findById(id);
+		if(!optional.isPresent())
+			throw new ResourceNotFoundException("Não possivel encontrar o membro com id-"+id);
+		return new ResponseEntity<>(optional.get(), HttpStatus.OK);
 	}
 	
 	@PostMapping

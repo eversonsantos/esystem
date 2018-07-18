@@ -1,6 +1,5 @@
 package br.com.sw.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -41,7 +39,7 @@ public class Membro extends EntityDefault{
 	private List<Personagem> personagens;
 	
 	public Membro() {
-		this.personagens = new ArrayList<>();
+		
 	}
 
 	public Long getCodigo() {
@@ -77,7 +75,9 @@ public class Membro extends EntityDefault{
 	}
 
 	public int getNumerosPersonagens() {
-		return this.personagens.size();
+		if(this.personagens != null)
+			return this.personagens.size();
+		return 0;
 	}
 	
 }
