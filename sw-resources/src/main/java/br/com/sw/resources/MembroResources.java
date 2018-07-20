@@ -32,7 +32,7 @@ public class MembroResources {
 		return new ResponseEntity<>(pessoaRepository.findAll(), HttpStatus.OK);
 	}
 	
-	@GetMapping(path = "{id}")
+	@GetMapping(path = "/findById/{id}")
 	public ResponseEntity<?> find(@PathVariable("id") Long id){
 		Optional<Membro> optional = pessoaRepository.findById(id);
 		if(!optional.isPresent())
@@ -51,7 +51,7 @@ public class MembroResources {
 		return new ResponseEntity<>(pessoaRepository.saveAndFlush(membro), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(path = "{id}")
+	@DeleteMapping(path = "/deleteById/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id){
 		pessoaRepository.deleteById(id);
 		return new ResponseEntity<>("Pessoa removida com sucesso", HttpStatus.OK);
