@@ -1,5 +1,6 @@
 package br.com.sw.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -39,7 +40,7 @@ public class Membro extends EntityDefault{
 	private List<Personagem> personagens;
 	
 	public Membro() {
-		
+		this.pessoa = new Pessoa();
 	}
 
 	public Long getCodigo() {

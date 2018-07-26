@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import br.com.sw.exception.ResourceNotFoundException;
 import br.com.sw.model.Membro;
 import br.com.sw.repository.MembroRepository;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/membros")
 public class MembroResources {
@@ -56,4 +58,5 @@ public class MembroResources {
 		pessoaRepository.deleteById(id);
 		return new ResponseEntity<>("Pessoa removida com sucesso", HttpStatus.OK);
 	}
+	
 }
