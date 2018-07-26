@@ -1,5 +1,42 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<span class="ui-float-label">
-  <input id="float-input" type="text" size="30" pInputText> 
-  <label for="float-input">Username</label>
-</span>
+<section class="content-header">
+  <h1>
+    Membros >>
+    <small>Novo Membro</small>
+  </h1>
+</section>
+<section class="content container-fluid">
+
+  <!-- span class="ui-float-label">
+    <input id="float-input" type="text" class="form-control">
+    <label for="float-input">
+      <b>Nome</b>
+    </label>
+  </span-->
+  <form>
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-3">
+            <span class="ui-float-label">
+              <input id="input-cpf" name="cpf" type="text" class="form-control" pInputText>
+              <label for="input-cpf" >Nome</label>
+            </span>
+          </div>
+          <div class="col-md-3">
+            <span class="ui-float-label">
+              <input id="input-nome" name="nome" type="text" ng-model="pessoa.nome" class="form-control" required pInputText>
+              <label for="input-nome">Apelido</label>
+            </span>
+            <br/>
+          </div>
+          <!-- /.box-body -->
+          <div class="col-md-8">
+            <button type="submit" class="btn btn-block btn-social btn-dropbox">
+              <i class="fa fa-lg fa-check-square-o"></i>Salvar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
