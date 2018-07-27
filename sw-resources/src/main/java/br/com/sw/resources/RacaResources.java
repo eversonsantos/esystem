@@ -17,44 +17,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sw.exception.ResourceNotFoundException;
-import br.com.sw.model.Membro;
-import br.com.sw.repository.MembroRepository;
+import br.com.sw.model.Raca;
+import br.com.sw.repository.RacaRepository;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/membros")
-public class MembroResources {
+@RequestMapping("/racas")
+public class RacaResources {
 
 	@Autowired
-	private MembroRepository membrosRepository;
+	private RacaRepository racaRepository;
 	
 	@GetMapping
 	public ResponseEntity<?> listAll(){
-		return new ResponseEntity<>(membrosRepository.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(racaRepository.findAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping(path = "/findById/{id}")
 	public ResponseEntity<?> find(@PathVariable("id") Long id){
-		Optional<Membro> optional = membrosRepository.findById(id);
+		Optional<Raca> optional = racaRepository.findById(id);
 		if(!optional.isPresent())
-			throw new ResourceNotFoundException("Não possivel encontrar -"+id);
+			throw new ResourceNotFoundException("Não possivel encontrar "+id);
 		return new ResponseEntity<>(optional.get(), HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody Membro membro) {
+	public ResponseEntity<?> save(@RequestBody Raca membro) {
 		membro.setAtualizacao(new Date());
-		return new ResponseEntity<>(membrosRepository.save(membro), HttpStatus.CREATED);
+		return new ResponseEntity<>(racaRepository.save(membro), HttpStatus.CREATED);
 	}
 	
 	@PutMapping
-	public ResponseEntity<?> update(@RequestBody Membro membro) {
-		return new ResponseEntity<>(membrosRepository.saveAndFlush(membro), HttpStatus.OK);
+	public ResponseEntity<?> update(@RequestBody Raca membro) {
+		return new ResponseEntity<>(racaRepository.saveAndFlush(membro), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(path = "/deleteById/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id){
-		membrosRepository.deleteById(id);
+		racaRepository.deleteById(id);
 		return new ResponseEntity<>("Operação realizada com sucesso", HttpStatus.OK);
 	}
 	
