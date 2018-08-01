@@ -28,10 +28,6 @@ public class Raca extends EntityDefault {
 	@Column(name = "nm_rac")
 	private String nome;
 	
-	@Column(name = "ch_sex")
-	@Enumerated(EnumType.STRING)
-	private DominioSexo sexo;
-	
 //	
 //	private List<Classes> classes;
 
@@ -51,11 +47,4 @@ public class Raca extends EntityDefault {
 		this.nome = nome;
 	}
 
-	public DominioSexo getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(DominioSexo sexo) {
-		this.sexo = sexo;
-	}
 }
