@@ -1,0 +1,10 @@
+.mat-column-acao {
+    width: 10px;
+    text-align: center;
+    padding-right: 20px !important;
+}
+.mat-column-codigo {
+    width: 100px;
+    text-align: center;
+    padding: 5px !important;
+}

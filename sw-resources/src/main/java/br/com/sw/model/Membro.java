@@ -1,5 +1,6 @@
 package br.com.sw.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 
 @Table
 @Entity(name = "tbl_membro")
-public class Membro extends EntityDefault{
+public class Membro extends EntityDefault implements Serializable {
 
 	/**
 	 * 
@@ -35,7 +36,7 @@ public class Membro extends EntityDefault{
 	@JoinColumn(name = "cd_pes")
 	private Pessoa pessoa;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="membro", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Personagem> personagens;
 	
 	public Membro() {

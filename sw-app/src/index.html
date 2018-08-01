@@ -8,8 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body class="hold-transition register-page">
-  <app-root></app-root>
+<body class="hold-transition skin-blue sidebar-mini">
+  <app-root>
+    <div class="wrapper">
+      <div class="control-sidebar-bg"></div>
+    </div>
+  </app-root>
 </body>
-</script> 
+<script>
+  $(function(){
+    $('input[type="radio"].minimal').iCheck({
+        radioClass   : 'iradio_minimal-blue'
+      });
+  });
+</script>
 </html>

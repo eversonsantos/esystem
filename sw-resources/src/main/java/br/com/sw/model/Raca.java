@@ -2,10 +2,14 @@ package br.com.sw.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import br.com.sw.dominio.DominioSexo;
 
 @Entity
 @Table(name = "tbl_raca")
@@ -19,28 +23,39 @@ public class Raca extends EntityDefault {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_rac")
-	private Long id;
+	private Long codigo;
 	
 	@Column(name = "nm_rac")
 	private String nome;
 	
+	@Column(name = "ch_sex")
+	@Enumerated(EnumType.STRING)
+	private DominioSexo sexo;
+	
 //	
 //	private List<Classes> classes;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
 	}
 
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
+	public DominioSexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(DominioSexo sexo) {
+		this.sexo = sexo;
+	}
 }

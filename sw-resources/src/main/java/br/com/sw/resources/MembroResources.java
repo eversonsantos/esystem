@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.sw.exception.ResourceNotFoundException;
 import br.com.sw.model.Membro;
+import br.com.sw.model.Personagem;
 import br.com.sw.repository.MembroRepository;
 
 @CrossOrigin
@@ -43,8 +44,13 @@ public class MembroResources {
 	
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody Membro membro) {
+		
 		membro.setAtualizacao(new Date());
-		return new ResponseEntity<>(membrosRepository.save(membro), HttpStatus.CREATED);
+		for(Personagem personagem : membro.getPersonagens())
+			personagem.setMembro(membro);
+		membrosRepository.save(membro);
+		Membro savedMembro = this.membrosRepository.findById(membro.getCodigo()).get();
+		return new ResponseEntity<>(savedMembro, HttpStatus.CREATED);
 	}
 	
 	@PutMapping

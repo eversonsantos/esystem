@@ -1,92 +1,69 @@
-<section class="content-header">
-  <h1>
-    Membros >>
-    <small>Novo Membro</small>
-  </h1>
+<!-- <section class="content-header">
+    <h1>
+        Raça >>
+        <small>Nova Raça</small>
+    </h1>
 </section>
 <section class="content container-fluid">
-  <div class="row">
-    <div class="col-md-6">
-      <form>
-        <div class="box">
-          <div class="box-body">
-            <div class="row">
-              <div class="col-md-6">
-                <span class="ui-float-label">
-                  <input id="input-nome" name="nome" type="text" [(ngModel)]="membro._nome" class="form-control" pInputText re>
-                  <label for="input-nome">Nome</label>
-                </span>
-              </div>
-              <div class="col-md-6">
-                <span class="ui-float-label">
-                  <input id="input-apelido" name="apelido" type="text" [(ngModel)]="membro._apelido" class="form-control" pInputText>
-                  <label for="input-apelido">Apelido</label>
-                </span>
-                <br/>
-              </div>
-              <!-- /.box-body -->
-              <div class="col-md-12">
-                <button type="button" class="btn btn-block btn-social btn-dropbox" (click)="push()">
-                  <i class="fa fa-lg fa-check-square-o"></i>Salvar Membro
-                </button>
-              </div>
-            </div>
-          </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form>
+                <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"> Nova Raça</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Raça </label>
+                                <input name="raca-nome" type="text" [(ngModel)]="raca._nome" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-block btn-social btn-dropbox" (click)="push()">
+                            <i class="fa fa-lg fa-check-square-o"></i>Salvar
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
-    <div class="col-md-6">
-      <div class="box">
-        <div class="box-body">
-          <div class="row">
-            <div class="col-md-6">
-              <span class="ui-float-label">
-                <input id="input-nome-personagem" type="text" [(ngModel)]="personagem._nome" class="form-control" pInputText>
-                <label for="input-nome-personagem">Personagem</label>
-              </span>
-            </div>
-            <br/>
-          </div>
-          <div class="row"> 
-            <br/>
-            <div class="col-md-12">
-              <button type="button" class="btn btn-block btn-social btn-dropbox" (click)="addPersonagem()">
-                <i class="fa fa-lg fa-check-square-o"></i>Adiciona Personagem
-              </button>
-            </div>
-          </div>
-            <table class="table table-bordered">
-              <tr>
-                <th>Personagem</th>
-                <th>Funcao</th>
-              </tr>
-              <tr *ngFor="let personagem of membro._personagens">
-                <td>{{personagem._nome}}</td>
-                <td>{{personagem._funcao}}</td>
-              </tr>
-            </table>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="col-md-6">
 
-  <div class="box">
-    <div class="box-header with-border">
-      <h3 class="box-title">Lista de membros</h3>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort class="table table-striped">
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
+                    <td mat-cell *matCellDef="let raca"> {{raca._codigo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+                    <td mat-cell *matCellDef="let raca"> {{raca._nome}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acao">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+                    <td mat-cell *matCellDef="let raca" class="td-acao">
+                        <a href="#" title="editar registro" (click)="edit(raca)">
+                            <span class=" fa fa-edit fa-lg"></span>
+                        </a>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let raca; columns: displayedColumns;"></tr>
+
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+        </div>
     </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-      <table class="table table-bordered">
-        <tr>
-          <th>Nome</th>
-          <th>Apelido</th>
-        </tr>
-        <tr *ngFor="let membro of membros">
-          <td>{{membro._nome}}</td>
-          <td>{{membro._apelido}}</td>
-        </tr>
-      </table>
-    </div>
-    <!-- /.box-body -->
-  </div>
-</section>
+</section> -->
+<app-header></app-header>
+<app-menu></app-menu>
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+        <router-outlet></router-outlet>
+    </section>
+</div>
+<app-footer></app-footer>

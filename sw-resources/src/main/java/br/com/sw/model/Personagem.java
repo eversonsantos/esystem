@@ -1,6 +1,5 @@
 package br.com.sw.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +29,7 @@ public class Personagem {
 	@JoinColumn(name="cd_mem")
 	private Membro membro;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "cd_rac")
 	private Raca raca;
 
