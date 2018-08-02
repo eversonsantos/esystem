@@ -1,3 +1,70 @@
-<h3>
-  Formulario membro
-</h3>
+<div class="row">
+  <div class="col-md-8">
+    <div class="box box-default">
+      <div class="box-header">
+        <h3 class="box-title">Membro
+          <small>>> Novo Membro</small>
+        </h3>
+      </div>
+      <div class="box-body pad">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <label for="membro-nome">Membro</label>
+              <input type="text" name="membro-nome" id="membro-nome" class="form-control">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="membro-apelido">Apelido</label>
+              <input type="text" name="membro-apelido" id="membro-apelido" class="form-control">
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <fieldset>
+              <legend>
+                <label>Personagens</label>
+              </legend>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="pers-nome">Personagem</label>
+                    <input type="text" name="pers-nome" id="pers-nome" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="pers-raca">Raça</label>
+                    <select class="form-control">
+                      <option>Selecione...</option>
+                      <option>Tauren</option>
+                      <option>Elfo Sangrento</option>
+                      <option>Troll</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="pers-classe">Classe</label>
+                    <select class="form-control" id="pers-classe" name="pers-classe">
+                      <option>Selecione...</option>
+                      <option>Priest</option>
+                      <option>Lock</option>
+                      <option>Hunter</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div class="box-footer">
+        <button type="button" class="btn btn-block btn-social btn-default">
+          <i class="fa fa-lg fa-check-square-o"></i>Salvar Membro
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

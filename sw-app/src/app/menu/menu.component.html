@@ -27,19 +27,41 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">Menu Principal</li>
-      <li>
-          <a routerLink="/membros" routerActiveLink="active">
-            <i class="fa fa-users fa-lg"></i>
-            <span style="padding-left: 10px;">Membros</span>
-          </a>
-      </li>
-      <li>
-          <a routerLink="/racas" routerActiveLink="active">
-            <i class="fa fa-paw fa-lg"></i>
-            <span style="padding-left: 10px;">Raças</span>
-          </a>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-list-alt fa-lg"></i>
+          <span class="menu menu-bold">Cadastros</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a routerLink="/membros" routerActiveLink="active">
+              <i class="fa fa-users fa-lg"></i>
+              <span class="menu">Membros</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/racas" routerActiveLink="active">
+              <i class="fa fa-paw fa-lg"></i>
+              <span class="menu">Raças</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/classes" routerActiveLink="active">
+              <i class="fa fa-adjust fa-lg"></i>
+              <span class="menu">Classes</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/specs" routerActiveLink="active">
+              <i class="fa fa-shield fa-lg"></i>
+              <span class="menu">Specs</span>
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </section>
-  <!-- /.sidebar -->
 </aside>
