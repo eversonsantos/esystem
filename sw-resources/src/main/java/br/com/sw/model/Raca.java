@@ -1,20 +1,21 @@
 package br.com.sw.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import br.com.sw.dominio.DominioSexo;
 
 @Entity
 @Table(name = "tbl_raca")
 public class Raca extends EntityDefault {
-	
+
 	/**
 	 * 
 	 */
@@ -24,12 +25,15 @@ public class Raca extends EntityDefault {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cd_rac")
 	private Long codigo;
-	
+
 	@Column(name = "nm_rac")
 	private String nome;
-	
-//	
-//	private List<Classes> classes;
+
+	@ManyToMany
+	@JoinTable(name = "tbl_raca_classes", 
+			joinColumns = { @JoinColumn(name = "cd_rac") }, 
+			inverseJoinColumns = { @JoinColumn(name = "cd_cla") })
+	private List<Classes> classes;
 
 	public String getNome() {
 		return nome;
